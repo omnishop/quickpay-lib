@@ -1,0 +1,6 @@
+<resources>
+    <string name="txt_err_no_internet">Lỗi kết nối Internet</string>
+    <string name="txt_err_request_timeout">Lỗi kết nối Server</string>
+    <string name="txt_err_unauthorized">Lỗi Xác thực</string>
+    <string name="txt_err_unknown">Lỗi Unknown</string>
+</resources>

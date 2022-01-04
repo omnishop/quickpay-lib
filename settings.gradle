@@ -1,0 +1,3 @@
+include ':quickpay-lib'
+include ':app'
+rootProject.name = "quickpayLib"

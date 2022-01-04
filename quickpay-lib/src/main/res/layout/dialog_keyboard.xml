@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0A0F06"
+    android:orientation="vertical">
+
+    <com.bda.quickpay_lib.utils.view.SfTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="Nhap so dien thoai"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_10ssp"
+        app:type="bold" />
+
+    <com.bda.quickpay_lib.utils.view.SfTextView
+        android:id="@+id/edtName"
+        android:layout_width="257dp"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/background_edit_keyboard"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_8ssp"
+        app:type="bold" />
+
+    <com.bda.quickpay_lib.utils.view.SfTextView
+        android:id="@+id/tvError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:text="So dien thoai khong dung"
+        android:textAlignment="center"
+        android:textColor="@color/color_E93013"
+        android:textSize="@dimen/_7ssp"
+        android:visibility="invisible"
+        app:type="regular" />
+
+    <com.bda.quickpay_lib.utils.view.SfTextView
+        android:id="@+id/tvHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:text="Nhập số điện thoại của quý khách để bộ phận CSKH liên hệ và xác nhận đơn hàng."
+        android:textAlignment="center"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/_7ssp"
+        app:type="medium" />
+
+    <com.bda.quickpay_lib.utils.view.BDAKeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#0A0F06"
+        android:gravity="bottom"
+        android:nextFocusRight="@+id/keyboard" />
+
+    <RelativeLayout
+        android:id="@+id/bn_confirm"
+        android:layout_width="@dimen/_83sdp"
+        android:layout_height="@dimen/_19sdp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/_14sdp"
+        android:background="@drawable/background_button_selector"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+
+        <com.bda.quickpay_lib.utils.view.SfTextView
+            android:id="@+id/tvConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:text="Xác nhận"
+            android:textColor="@drawable/selector_button_header"
+            android:textSize="@dimen/_6ssp"
+            android:visibility="visible"
+            app:type="semiBolt" />
+    </RelativeLayout>
+
+</LinearLayout>
+

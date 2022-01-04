@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_136sdp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/_17sdp"
+        android:background="#ffffff"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="@dimen/_7sdp"
+        app:cardElevation="@dimen/_1sdp"
+        app:cardMaxElevation="@dimen/_1sdp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bn_confirm"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_11sdp"
+                    android:layout_marginTop="@dimen/_11sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_7sdp"
+                        android:layout_height="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_go_back_gray" />
+
+                    <com.bda.quickpay_lib.utils.view.SfTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Thêm vào giỏ hàng"
+                        android:textColor="@color/color_484848"
+                        android:textSize="@dimen/_8ssp"
+                        app:type="regular" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/live_stream_detail_product_bg"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginEnd="6sp"
+                        android:layout_marginBottom="@dimen/_6sdp"
+                        app:cardCornerRadius="@dimen/_6sdp"
+                        app:cardElevation="0dp"
+                        app:cardMaxElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/img_product_quick_pay"
+                            android:layout_width="@dimen/_19sdp"
+                            android:layout_height="@dimen/_19sdp"
+                            android:scaleType="fitXY" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.bda.quickpay_lib.utils.view.SfTextView
+                            android:id="@+id/tvName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_3sdp"
+                            android:layout_toStartOf="@+id/price"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:textColor="@color/color_484848"
+                            android:textSize="@dimen/_8ssp"
+                            app:type="regular"
+                            android:visibility="visible" />
+
+
+                        <com.bda.quickpay_lib.utils.view.SfTextView
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:layout_marginEnd="@dimen/_6sdp"
+                            android:layout_marginBottom="@dimen/_6sdp"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/_6ssp"
+                            app:type="regular"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <com.bda.quickpay_lib.utils.view.SfTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="Số lượng"
+                    android:textColor="@color/color_484848"
+                    android:textSize="@dimen/_6ssp"
+                    app:type="regular"
+                    android:visibility="visible" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/background_delivery_selection">
+
+
+                    <RelativeLayout
+                        android:id="@+id/bn_minus"
+                        android:layout_width="@dimen/_4sdp"
+                        android:layout_height="@dimen/_4sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:nextFocusLeft="@id/bn_minus"
+                        android:nextFocusUp="@id/bn_minus"
+                        android:nextFocusDown="@id/bn_confirm">
+
+                        <ImageView
+                            android:id="@+id/image_bn_minus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_minus_gray_livestream"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+
+
+                    <com.bda.quickpay_lib.utils.view.SfTextView
+                        android:id="@+id/quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="1"
+                        android:textColor="@color/color_484848"
+                        android:textSize="@dimen/_7ssp"
+                        app:type="regular"
+                        android:visibility="visible" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/bn_plus"
+                        android:layout_width="@dimen/_4sdp"
+                        android:layout_height="@dimen/_4sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/_6sdp"
+                        android:nextFocusRight="@id/bn_plus"
+                        android:nextFocusUp="@id/bn_plus"
+                        android:nextFocusDown="@id/bn_confirm">
+
+                        <ImageView
+                            android:id="@+id/image_bn_plus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_plus_gray_livestream"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/bn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_19sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:nextFocusUp="@id/bn_plus"
+                android:background="@drawable/background_button_selector"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+
+                <com.bda.quickpay_lib.utils.view.SfTextView
+                    android:id="@+id/tvConfirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:text="Xác nhận"
+                    android:textColor="#2E9B93"
+                    android:textSize="@dimen/_6ssp"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+

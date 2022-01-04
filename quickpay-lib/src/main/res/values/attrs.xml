@@ -1,0 +1,23 @@
+<resources>
+    <declare-styleable name="SfView">
+        <attr name="type">
+            <enum name="light" value="1" />
+            <enum name="regular" value="2" />
+            <enum name="heavy" value="3" />
+            <enum name="bold" value="4" />
+            <enum name="medium" value="5" />
+            <enum name="semiBolt" value="6" />
+            <enum name="italic" value="7" />
+            <enum name="mediumText" value="8" />
+        </attr>
+
+        <attr name="temperature" format="integer" />
+
+        <attr name="weatherType">
+            <enum name="rainy" value="0" />
+        </attr>
+
+        <attr name="showSoftKeyboard" format="boolean"/>
+    </declare-styleable>
+
+</resources>
