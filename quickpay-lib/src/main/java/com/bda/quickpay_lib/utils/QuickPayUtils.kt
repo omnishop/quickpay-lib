@@ -4,6 +4,7 @@ package com.bda.quickpay_lib.utils
 object QuickPayUtils {
     // Config
     private var mPlatform: String = ""
+    private var mIsDarkMode: Boolean = false
     private var mXpiKey: String = ""
     private var mXpiKeyTracking: String = ""
     private var mIsProductionEnv: Boolean = true
@@ -155,15 +156,21 @@ object QuickPayUtils {
         return this.mIsProductionEnv
     }
 
+    fun isDarkMode(): Boolean {
+        return this.mIsDarkMode
+    }
+
     fun initQuickPay(
         platform: String,
         xApiKey: String,
         xApiKeyTracking: String,
-        isProductionEnv: Boolean
+        isProductionEnv: Boolean,
+        isDarkMode: Boolean = false
     ) {
         this.mPlatform = platform
         this.mIsProductionEnv = isProductionEnv
         this.mXpiKey = xApiKey
+        this.mIsDarkMode = isDarkMode
         this.mXpiKeyTracking = xApiKeyTracking
 
     }

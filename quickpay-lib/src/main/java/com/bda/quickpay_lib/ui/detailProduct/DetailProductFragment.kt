@@ -17,17 +17,13 @@ import com.bda.quickpay_lib.models.Product
 import com.bda.quickpay_lib.models.response.CheckCustomerResponse
 import com.bda.quickpay_lib.ui.base.BaseFragment
 import com.bda.quickpay_lib.utils.Functions
+import com.bda.quickpay_lib.utils.view.SfStrikeTextView
 import com.bda.quickpay_lib.utils.view.SfTextView
-import kotlinx.android.synthetic.main.dialog_message.*
-import kotlinx.android.synthetic.main.fragment_add_to_cart_success.*
 import kotlinx.android.synthetic.main.fragment_detail_product.*
-import kotlinx.android.synthetic.main.fragment_quickpay.*
 import kotlinx.android.synthetic.main.fragment_quickpay.img_product_quick_pay
-import kotlinx.android.synthetic.main.fragment_quickpay.price
 
 class DetailProductFragment : BaseFragment(), DetailProductContract.View,
     MotionLayout.TransitionListener {
-
     var mListener: onDetailProductListener? = null
     private var presenter: DetailProductPresenter? = null
     private var product: Product? = null
@@ -40,10 +36,11 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
     private var isPlayAnimation = false
 
     private var tvProductName: SfTextView? = null
+    private var tvSalePrice: SfTextView? = null
+    private var tvPrice: SfStrikeTextView? = null
     private var icAddToCart: ImageView? = null
     private var icWishList: ImageView? = null
     private var icQuickPay: ImageView? = null
-    private var icOffAd: ImageView? = null
     private var tvQuickPay: SfTextView? = null
     private var tvAddToCart: SfTextView? = null
     private var tvOffAdd: SfTextView? = null
@@ -53,9 +50,17 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
     private var btnWishList: RelativeLayout? = null
     private var tvTimeout: SfTextView? = null
     private var motionLayout: RelativeLayout? = null
+    private var ivSort1: ImageView? = null
+    private var tvShortDes1: SfTextView? = null
+    private var ivSort2: ImageView? = null
+    private var tvShortDes2: SfTextView? = null
+    private var ivSort3: ImageView? = null
+    private var tvShortDes3: SfTextView? = null
+    private var ivSort4: ImageView? = null
+    private var tvShortDes4: SfTextView? = null
     private var pbLoading: ProgressBar? = null
-    private var isFirstOpen: Boolean = true
 
+    private var isFirstOpen: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,10 +81,12 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_detail_product, container, false)
         motionLayout = view.findViewById(R.id.motionLayout)
+        tvSalePrice = view.findViewById(R.id.sale_price)
+        tvPrice = view.findViewById(R.id.price)
+        motionLayout = view.findViewById(R.id.motionLayout)
         pbLoading = view.findViewById(R.id.pbLoading)
         tvProductName = view.findViewById(R.id.tvName)
         icWishList = view.findViewById(R.id.image_bn_wish)
-        icOffAd = view.findViewById(R.id.img_off_ad)
         icAddToCart = view.findViewById(R.id.img_add_to_cart)
         tvAddToCart = view.findViewById(R.id.tvAddToCart)
         tvOffAdd = view.findViewById(R.id.tvOffAd)
@@ -90,6 +97,15 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
         icQuickPay = view.findViewById(R.id.img_quick_pay)
         tvQuickPay = view.findViewById(R.id.tvQuickPay)
         tvTimeout = view.findViewById(R.id.tvTimeout)
+        ivSort1 = view.findViewById(R.id.ivSort1)
+        tvShortDes1 = view.findViewById(R.id.short_des_1)
+        ivSort2 = view.findViewById(R.id.ivSort2)
+        tvShortDes2 = view.findViewById(R.id.short_des_2)
+        ivSort3 = view.findViewById(R.id.ivSort3)
+        tvShortDes3 = view.findViewById(R.id.short_des_3)
+        ivSort4 = view.findViewById(R.id.ivSort4)
+        tvShortDes4 = view.findViewById(R.id.short_des_4)
+
         presenter?.getProduct(productId)
         presenter?.getProfile(fptId, phone)
         return view
@@ -170,7 +186,6 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 
         btnOffAd?.setOnFocusChangeListener { v, hasFocus ->
             tvOffAdd?.isSelected = hasFocus
-            icOffAd?.isSelected = hasFocus
         }
 
         btnWishList?.setOnFocusChangeListener { v, hasFocus ->
@@ -215,11 +230,49 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
         }
     }
 
+    override fun enableDarkMode() {
+        motionLayout?.setBackgroundColor(requireActivity().getColor(R.color.bg_dark))
+        tvProductName?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        tvSalePrice?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        tvPrice?.setTextColor(requireActivity().getColor(R.color.textSecondaryColor_dark))
+        tvShortDes1?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        tvShortDes2?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        tvShortDes3?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        tvShortDes4?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        btnQuickPay?.background =
+            requireActivity().getDrawable(R.drawable.background_button_selector_dark)
+        btnOffAd?.background =
+            requireActivity().getDrawable(R.drawable.background_button_selector_dark)
+        tvOffAdd?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
+        tvQuickPay?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
+        tvTimeout?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
+        icQuickPay?.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_thunder_selector_dark))
+    }
+
+    override fun disableDarkMode() {
+        motionLayout?.setBackgroundColor(requireActivity().getColor(R.color.bg_default))
+        tvProductName?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        tvSalePrice?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        tvPrice?.setTextColor(requireActivity().getColor(R.color.textSecondaryColor_default))
+        tvShortDes1?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        tvShortDes2?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        tvShortDes3?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        tvShortDes4?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        btnQuickPay?.background =
+            requireActivity().getDrawable(R.drawable.background_button_selector_default)
+        btnOffAd?.background =
+            requireActivity().getDrawable(R.drawable.background_button_selector_default)
+        tvOffAdd?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
+        tvQuickPay?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
+        tvTimeout?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
+        icQuickPay?.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_thunder_selector_default))
+    }
+
     private fun initProduct(mProduct: Product) {
         tvProductName?.text = mProduct.display_name_detail
 
-        price.text = Functions.formatMoney(mProduct.listedPrice)
-        sale_price?.text = Functions.formatMoney(mProduct.price)
+        tvPrice?.text = Functions.formatMoney(mProduct.listedPrice)
+        tvSalePrice?.text = Functions.formatMoney(mProduct.price)
         img_product_quick_pay?.let {
             Functions.loadImage(mProduct.imageCover, it)
         }
@@ -246,9 +299,9 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 //        }
         if (mProduct.short_descriptions.short_des_1 != null && mProduct.short_descriptions.short_des_1.isNotEmpty()) {
             ll_sort_1?.visibility = View.VISIBLE
-            short_des_1?.text = mProduct.short_descriptions.short_des_1
+            tvShortDes1?.text = mProduct.short_descriptions.short_des_1
             try {
-                short_des_1?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_1_color.takeIf { mProduct.short_descriptions.short_des_1_color != null && mProduct.short_descriptions.short_des_1_color.isNotEmpty() }
+                tvShortDes1?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_1_color.takeIf { mProduct.short_descriptions.short_des_1_color != null && mProduct.short_descriptions.short_des_1_color.isNotEmpty() }
                     ?: "#000000"))
             } catch (e: IllegalArgumentException) {
 
@@ -259,9 +312,9 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 
         if (mProduct.short_descriptions.short_des_2 != null && mProduct.short_descriptions.short_des_2.isNotEmpty()) {
             ll_sort_2?.visibility = View.VISIBLE
-            short_des_2?.text = mProduct.short_descriptions.short_des_2
+            tvShortDes2?.text = mProduct.short_descriptions.short_des_2
             try {
-                short_des_2?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_2_color.takeIf { mProduct.short_descriptions.short_des_2_color != null && mProduct.short_descriptions.short_des_2_color.isNotEmpty() }
+                tvShortDes2?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_2_color.takeIf { mProduct.short_descriptions.short_des_2_color != null && mProduct.short_descriptions.short_des_2_color.isNotEmpty() }
                     ?: "#000000"))
             } catch (e: IllegalArgumentException) {
 
@@ -272,9 +325,9 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 
         if (mProduct.short_descriptions.short_des_3 != null && mProduct.short_descriptions.short_des_3?.isNotEmpty()) {
             ll_sort_3?.visibility = View.VISIBLE
-            short_des_3?.text = mProduct.short_descriptions.short_des_3
+            tvShortDes3?.text = mProduct.short_descriptions.short_des_3
             try {
-                short_des_3?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_3_color.takeIf { mProduct.short_descriptions.short_des_3_color != null && mProduct.short_descriptions.short_des_3_color.isNotEmpty() }
+                tvShortDes3?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_3_color.takeIf { mProduct.short_descriptions.short_des_3_color != null && mProduct.short_descriptions.short_des_3_color.isNotEmpty() }
                     ?: "#000000"))
             } catch (e: IllegalArgumentException) {
 
@@ -285,9 +338,9 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 
         if (mProduct.short_descriptions.short_des_4 != null && mProduct.short_descriptions.short_des_4?.isNotEmpty()) {
             ll_sort_4?.visibility = View.VISIBLE
-            short_des_4?.text = mProduct.short_descriptions.short_des_4
+            tvShortDes4?.text = mProduct.short_descriptions.short_des_4
             try {
-                short_des_4?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_4_color.takeIf { mProduct.short_descriptions.short_des_4_color != null && mProduct.short_descriptions.short_des_4_color.isNotEmpty() }
+                tvShortDes4?.setTextColor(Color.parseColor(mProduct.short_descriptions.short_des_4_color.takeIf { mProduct.short_descriptions.short_des_4_color != null && mProduct.short_descriptions.short_des_4_color.isNotEmpty() }
                     ?: "#000000"))
             } catch (e: IllegalArgumentException) {
 

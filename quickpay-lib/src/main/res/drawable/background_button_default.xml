@@ -7,6 +7,6 @@
         android:type="linear" />
     <corners android:radius="@dimen/_5sdp" />
     <stroke
-        android:width="@dimen/_1sdp"
+        android:width="1dp"
         android:color="@color/color_C6C6C6" />
 </shape>

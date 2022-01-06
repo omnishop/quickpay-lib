@@ -48,7 +48,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:text="Thêm vào giỏ hàng"
-                        android:textColor="@color/color_484848"
+                        android:textColor="@color/textPrimaryColor_default"
                         android:textSize="@dimen/_8ssp"
                         app:type="regular" />
 
@@ -95,7 +95,7 @@
                             android:layout_toStartOf="@+id/price"
                             android:ellipsize="end"
                             android:maxLines="2"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_8ssp"
                             app:type="regular"
                             android:visibility="visible" />
@@ -123,7 +123,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:text="Số lượng"
-                    android:textColor="@color/color_484848"
+                    android:textColor="@color/textPrimaryColor_default"
                     android:textSize="@dimen/_6ssp"
                     app:type="regular"
                     android:visibility="visible" />
@@ -165,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="1"
-                        android:textColor="@color/color_484848"
+                        android:textColor="@color/textPrimaryColor_default"
                         android:textSize="@dimen/_7ssp"
                         app:type="regular"
                         android:visibility="visible" />
@@ -205,7 +205,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:nextFocusUp="@id/bn_plus"
-                android:background="@drawable/background_button_selector"
+                android:background="@drawable/background_button_selector_default"
                 android:focusable="true"
                 android:focusableInTouchMode="true">
 

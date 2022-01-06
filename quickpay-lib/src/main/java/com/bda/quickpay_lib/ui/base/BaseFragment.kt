@@ -1,15 +1,33 @@
 package com.bda.quickpay_lib.ui.base
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bda.quickpay_lib.R
-import com.bda.quickpay_lib.utils.Functions
+import com.bda.quickpay_lib.utils.QuickPayUtils
 import com.bda.quickpay_lib.utils.convertToBaseException
 import java.net.HttpURLConnection
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-open class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        applyBackground()
+//        return super.onCreateView(inflater, container, savedInstanceState)
+//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        applyBackground()
+    }
 
     fun handleError(e: Throwable) {
         var errMessage = ""
@@ -50,4 +68,16 @@ open class BaseFragment : Fragment() {
         }
         Toast.makeText(requireContext(), errMessage, Toast.LENGTH_SHORT).show()
     }
+
+    private fun applyTheme() {
+        val theme = if (QuickPayUtils.isProductEnv()) R.style.AppThemeDark else R.style.AppTheme
+        requireActivity().setTheme(theme)
+    }
+
+    private fun applyBackground() {
+        if (QuickPayUtils.isDarkMode()) enableDarkMode() else disableDarkMode()
+    }
+
+    abstract fun enableDarkMode()
+    abstract fun disableDarkMode()
 }

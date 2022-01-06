@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bạn chưa nhập mã Voucher"
-                android:textColor="@color/color_484848"
+                android:textColor="@color/textPrimaryColor_default"
                 android:textSize="@dimen/_8ssp"
                 android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:text="Bạn chưa nhập mã Vouchersdfadfdf sdfa afasdfasdfasddfadfaadf "
-                    android:textColor="@color/color_484848"
+                    android:textColor="@color/textPrimaryColor_default"
                     android:textSize="@dimen/_7ssp" />
 
                 <TextView

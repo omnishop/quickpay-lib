@@ -48,7 +48,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:text="Mua hàng nhanh"
-                        android:textColor="@color/color_484848"
+                        android:textColor="@color/textPrimaryColor_default"
                         android:textSize="@dimen/_8ssp"
                         app:type="bold" />
 
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.9"
                         android:text="Thông tin mua hàng"
-                        android:textColor="@color/color_484848"
+                        android:textColor="@color/textPrimaryColor_default"
                         android:textSize="@dimen/_5ssp"
                         android:visibility="visible"
                         app:type="semiBolt" />
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.1"
                         android:text="Phương thức thanh toán"
-                        android:textColor="@color/color_484848"
+                        android:textColor="@color/textPrimaryColor_default"
                         android:textSize="@dimen/_5ssp"
                         android:visibility="visible"
                         app:type="medium" />
@@ -143,7 +143,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_6ssp"
                             app:type="regular" />
                     </RelativeLayout>
@@ -195,7 +195,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:text="0đ"
-                                android:textColor="@color/color_484848"
+                                android:textColor="@color/textPrimaryColor_default"
                                 android:textSize="@dimen/_6ssp"
                                 app:type="regular" />
                         </RelativeLayout>
@@ -229,7 +229,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:text="Miễn phí"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_6ssp"
                             app:type="regular" />
                     </RelativeLayout>
@@ -261,7 +261,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_8ssp"
                             app:type="regular" />
                     </RelativeLayout>
@@ -273,7 +273,7 @@
                     android:layout_marginStart="@dimen/_11sdp"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:text="Thêm voucher"
-                    android:textColor="@color/color_484848"
+                    android:textColor="@color/textPrimaryColor_default"
                     android:textSize="@dimen/_6ssp"
                     android:visibility="visible"
                     app:type="medium" />
@@ -285,7 +285,7 @@
                     android:layout_marginStart="@dimen/_11sdp"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginEnd="@dimen/_11sdp"
-                    android:background="@drawable/background_button_selector"
+                    android:background="@drawable/background_button_selector_default"
                     android:focusable="true"
                     android:focusableInTouchMode="true">
 
@@ -296,7 +296,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginStart="@dimen/_2sdp"
                         android:text="Chọn / nhập voucher"
-                        android:textColor="@drawable/selector_button_header"
+                        android:textColor="@drawable/selector_button_header_default"
                         android:textSize="@dimen/_7ssp"
                         android:visibility="visible"
                         app:type="medium" />
@@ -310,7 +310,7 @@
                     android:layout_marginStart="@dimen/_11sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:text="Chọn phương thức thanh toán"
-                    android:textColor="@color/color_484848"
+                    android:textColor="@color/textPrimaryColor_default"
                     android:textSize="@dimen/_6ssp"
                     android:visibility="visible"
                     app:type="medium" />
@@ -340,7 +340,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginStart="28dp"
                         android:text="COD"
-                        android:textColor="@color/color_484848"
+                        android:textColor="@color/textPrimaryColor_default"
                         android:textSize="@dimen/_7ssp"
                         android:visibility="visible"
                         app:type="medium" />
@@ -367,7 +367,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@drawable/background_button_selector"
+                android:background="@drawable/background_button_selector_default"
                 android:focusable="true"
                 android:focusableInTouchMode="true">
 
@@ -379,7 +379,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:text="Xác nhận"
-                    android:textColor="@drawable/selector_button_header"
+                    android:textColor="@drawable/selector_button_header_default"
                     android:textSize="@dimen/_6ssp"
                     android:visibility="visible"
                     app:type="semiBolt" />

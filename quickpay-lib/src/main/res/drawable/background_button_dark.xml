@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="45"
+        android:endColor="@color/bgButton_dark"
+        android:startColor="@color/bgButton_dark"
+        android:type="linear" />
+    <corners android:radius="@dimen/_5sdp" />
+    <stroke
+        android:width="1dp"
+        android:color="#401F1F1F" />
+</shape>

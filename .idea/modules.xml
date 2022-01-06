@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quickpayLib.iml" filepath="$PROJECT_DIR$/.idea/modules/quickpayLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/quickpayLib.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/quickpayLib.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quickpay-lib/quickpayLib.quickpay-lib.iml" filepath="$PROJECT_DIR$/.idea/modules/quickpay-lib/quickpayLib.quickpay-lib.iml" />
+    </modules>
+  </component>
+</project>

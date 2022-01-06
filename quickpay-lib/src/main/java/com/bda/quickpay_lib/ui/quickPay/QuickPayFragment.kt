@@ -8,11 +8,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.speech.RecognizerIntent
 import android.util.Log
-import android.view.*
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.bda.quickpay_lib.R
 import com.bda.quickpay_lib.models.Product
 import com.bda.quickpay_lib.models.response.CheckCustomerResponse
@@ -22,7 +25,6 @@ import com.bda.quickpay_lib.utils.Functions
 import com.bda.quickpay_lib.utils.view.SfEditText
 import com.bda.quickpay_lib.utils.view.SfTextView
 import kotlinx.android.synthetic.main.fragment_quickpay.*
-import java.util.*
 
 class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayContract.View {
 
@@ -32,6 +34,7 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
     private var presenter: QuickPayPresenter? = null
     private var requestCode: Int = REQUEST_VOICE_NAME_CODE
 
+    private var rlContainer: RelativeLayout? = null
     private var edt_phone: SfEditText? = null
     private var edt_name: SfEditText? = null
     private var bn_voice_name: RelativeLayout? = null
@@ -44,7 +47,11 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
     private var image_bn_voice_phone: ImageView? = null
     private var btnConfirm: RelativeLayout? = null
     private var tvConfirm: SfTextView? = null
+    private var tvTitle: SfTextView? = null
     private var tvQuanlity: SfTextView? = null
+    private var tvHint: SfTextView? = null
+    private var llProduct: LinearLayout? = null
+    private var llQuantity: RelativeLayout? = null
     private var defaultSelectQuality = 1
 
     override fun onCreateView(
@@ -62,13 +69,18 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
         image_bn_voice_name = view.findViewById(R.id.image_bn_voice_name)
         bn_voice_phone = view.findViewById(R.id.bn_voice_phone)
         image_bn_voice_phone = view.findViewById(R.id.image_bn_voice_phone)
-        icMinus = view.findViewById(R.id.image_bn_minus)
-        icPlus = view.findViewById(R.id.image_bn_plus)
+        icMinus = view.findViewById(R.id.icMinus)
+        icPlus = view.findViewById(R.id.icPlus)
         btnConfirm = view.findViewById(R.id.bn_confirm)
         bnPlus = view.findViewById(R.id.btn_plus)
         bnMinus = view.findViewById(R.id.btn_minus)
         tvConfirm = view.findViewById(R.id.tvConfirm)
         tvQuanlity = view.findViewById(R.id.tvQuantity)
+        rlContainer = view.findViewById(R.id.rlContainer)
+        tvTitle = view.findViewById(R.id.tvTitle)
+        tvHint = view.findViewById(R.id.tvHint)
+        llProduct = view.findViewById(R.id.llProduct)
+        llQuantity = view.findViewById(R.id.llQuantity)
         return view
     }
 
@@ -184,11 +196,11 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
 
         btnConfirm?.setOnClickListener {
             if (edt_name?.text.toString().isNullOrBlank()) {
-                Functions.showMessage(activity!!, "Vui lòng nhập họ tên")
+                Functions.showMessage(requireContext(), "Vui lòng nhập họ tên")
                 return@setOnClickListener
             }
             if (edt_phone?.text.toString().isNullOrBlank()) {
-                Functions.showMessage(activity!!, "Vui lòng nhập số điện thoại")
+                Functions.showMessage(requireContext(), "Vui lòng nhập số điện thoại")
                 return@setOnClickListener
             }
             if (edt_phone?.text!!.length > 9) {
@@ -205,13 +217,13 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
                     )
                 } else {
                     Functions.showMessage(
-                        activity!!,
+                        requireContext(),
                         "Chức năng đang được bảo trì, Vui lòng liện hệ sau"
                     )
                     return@setOnClickListener
                 }
             } else {
-                Functions.showMessage(activity!!, "Số điện thoại không đúng")
+                Functions.showMessage(requireContext(), "Số điện thoại không đúng")
                 return@setOnClickListener
             }
         }
@@ -310,6 +322,78 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
                 requestVoicePermission()
             }
         }
+    }
+
+    override fun enableDarkMode() {
+        rlContainer?.setBackgroundColor(requireActivity().getColor(R.color.bg_dark))
+        tvTitle?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        tvHint?.setTextColor(requireActivity().getColor(R.color.textSecondaryColor_dark))
+        llProduct?.background = requireActivity().getDrawable(R.drawable.ic_num_gray_dark)
+        tvName?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        price?.setTextColor(requireActivity().getColor(R.color.textSecondaryColor_dark))
+        edt_name?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_dark)
+        edt_name?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        edt_name?.setHintTextColor(requireActivity().getColor(R.color.textSecondaryColor_dark))
+        edt_phone?.setHintTextColor(requireActivity().getColor(R.color.textSecondaryColor_dark))
+        edt_phone?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        edt_phone?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_dark)
+        bn_voice_name?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_dark)
+        bn_voice_phone?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_dark)
+        tvQuantityTitle?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        btn_plus?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_dark)
+        btn_minus?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_dark)
+        llQuantity?.background = requireActivity().getDrawable(R.drawable.ic_num_gray_dark)
+        tvQuantity?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_dark))
+        btnConfirm?.background =
+            requireActivity().getDrawable(R.drawable.background_button_selector_dark)
+        tvConfirm?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
+        icMinus!!.setColorFilter(requireActivity().getColor(R.color.color_white))
+        icPlus!!.setColorFilter(requireActivity().getColor(R.color.color_white))
+        image_bn_voice_name!!.setColorFilter(requireActivity().getColor(R.color.color_white))
+        image_bn_voice_phone!!.setColorFilter(requireActivity().getColor(R.color.color_white))
+    }
+
+    override fun disableDarkMode() {
+        rlContainer?.setBackgroundColor(requireActivity().getColor(R.color.bg_default))
+        tvTitle?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        tvHint?.setTextColor(requireActivity().getColor(R.color.textSecondaryColor_default))
+        llProduct?.background = requireActivity().getDrawable(R.drawable.ic_num_gray_default)
+        tvName?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        price?.setTextColor(requireActivity().getColor(R.color.textSecondaryColor_default))
+        edt_name?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_default)
+        edt_phone?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_default)
+
+        edt_name?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        edt_name?.setHintTextColor(requireActivity().getColor(R.color.textSecondaryColor_default))
+
+        edt_phone?.setHintTextColor(requireActivity().getColor(R.color.textSecondaryColor_default))
+        edt_phone?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        bn_voice_name?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_default)
+        bn_voice_phone?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_default)
+        tvQuantityTitle?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        btn_plus?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_default)
+        btn_minus?.background =
+            requireActivity().getDrawable(R.drawable.background_edit_selector_default)
+        llQuantity?.background = requireActivity().getDrawable(R.drawable.ic_num_gray_default)
+        tvQuantity?.setTextColor(requireActivity().getColor(R.color.textPrimaryColor_default))
+        btnConfirm?.background =
+            requireActivity().getDrawable(R.drawable.background_button_selector_default)
+        tvConfirm?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
+        icMinus?.setColorFilter(requireActivity().getColor(R.color.color_black))
+        icPlus?.setColorFilter(requireActivity().getColor(R.color.color_black))
+        image_bn_voice_name!!.setColorFilter(requireActivity().getColor(R.color.color_black))
+        image_bn_voice_phone!!.setColorFilter(requireActivity().getColor(R.color.color_black))
     }
 
 

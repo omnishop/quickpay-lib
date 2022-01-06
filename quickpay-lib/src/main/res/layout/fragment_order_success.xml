@@ -15,9 +15,10 @@
         app:cardUseCompatPadding="true">
 
         <RelativeLayout
+            android:id="@+id/rlContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bg_quick_pay">
+            android:background="@color/bg_default">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,6 +35,7 @@
                     android:src="@drawable/ic_tick_success" />
 
                 <com.bda.quickpay_lib.utils.view.SfTextView
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -45,6 +47,7 @@
                     app:type="bold" />
 
                 <com.bda.quickpay_lib.utils.view.SfTextView
+                    android:id="@+id/tvHint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -63,6 +66,7 @@
                     android:orientation="horizontal">
 
                     <com.bda.quickpay_lib.utils.view.SfTextView
+                        android:id="@+id/tvHotline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -89,12 +93,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llOrder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_11sdp"
                     android:layout_marginTop="@dimen/_11sdp"
                     android:layout_marginEnd="@dimen/_11sdp"
-                    android:background="@drawable/ic_num_gray"
+                    android:background="@drawable/ic_num_gray_default"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -124,7 +129,7 @@
                             android:ellipsize="end"
                             android:maxLines="2"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_5ssp"
                             app:type="medium" />
                     </RelativeLayout>
@@ -137,6 +142,7 @@
                         android:layout_marginBottom="@dimen/_2sdp">
 
                         <com.bda.quickpay_lib.utils.view.SfTextView
+                            android:id="@+id/tvOrder"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Đơn hàng"
@@ -150,7 +156,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_5ssp"
                             app:type="medium" />
                     </RelativeLayout>
@@ -163,6 +169,7 @@
                         android:layout_marginBottom="@dimen/_2sdp">
 
                         <com.bda.quickpay_lib.utils.view.SfTextView
+                            android:id="@+id/tvQuantityTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Số lượng"
@@ -175,7 +182,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_5ssp"
                             app:type="medium" />
                     </RelativeLayout>
@@ -194,6 +201,7 @@
                             android:layout_marginTop="@dimen/_1sdp">
 
                             <com.bda.quickpay_lib.utils.view.SfTextView
+                                android:id="@+id/tvSum"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -209,7 +217,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:text="0đ"
-                                android:textColor="@color/color_484848"
+                                android:textColor="@color/textPrimaryColor_default"
                                 android:textSize="@dimen/_5ssp"
                                 app:type="medium" />
                         </RelativeLayout>
@@ -223,6 +231,7 @@
                         android:layout_marginBottom="@dimen/_6sdp">
 
                         <com.bda.quickpay_lib.utils.view.SfTextView
+                            android:id="@+id/tvDeliveryTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_2sdp"
@@ -237,7 +246,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/_2sdp"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_5ssp"
                             app:type="medium" />
                     </RelativeLayout>
@@ -255,7 +264,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_11sdp"
                 android:layout_marginBottom="@dimen/_11sdp"
-                android:background="@drawable/background_button_selector"
+                android:background="@drawable/background_button_selector_default"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:nextFocusLeft="@id/bn_confirm"

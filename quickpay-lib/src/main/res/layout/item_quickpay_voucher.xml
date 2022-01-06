@@ -47,7 +47,7 @@
                 android:layout_marginEnd="@dimen/_3sdp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/color_484848"
+                android:textColor="@color/textPrimaryColor_default"
                 android:textSize="@dimen/_6ssp"
                 android:visibility="visible"
                 app:type="medium" />

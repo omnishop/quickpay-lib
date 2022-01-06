@@ -12,12 +12,14 @@ class QuickPayDialog(builder: Builder) {
     private var mPlatform: String = builder.platform
     private var mListener: QuickPayListener? = builder.listener
     private var mXApiKey: String = builder.xApiKey
+    private var mIsDarkMode: Boolean = builder.isDardMode
     private var mIsAppProduction: Boolean = builder.isAppProduction
     private var mXApiKeyTracking: String = builder.xApiKeyTracking
     private var quickPayDialog: MainQuickPayDialog? = null
 
     class Builder() {
         var userId: String = ""
+        var isDardMode: Boolean = false
         var userPhone: String = ""
         var productId: String = ""
         var platform: String = ""
@@ -66,6 +68,11 @@ class QuickPayDialog(builder: Builder) {
             return this
         }
 
+        fun setDarkMode(mIsDarkMode: Boolean): Builder {
+            this.isDardMode = mIsDarkMode
+            return this
+        }
+
         fun build(): QuickPayDialog {
             return QuickPayDialog(this)
         }
@@ -81,7 +88,11 @@ class QuickPayDialog(builder: Builder) {
 
     fun show(mActivity: Activity, fragmentManager: FragmentManager) {
         QuickPayUtils.initQuickPay(
-            platform = mPlatform, xApiKeyTracking = mXApiKeyTracking, xApiKey = mXApiKey, isProductionEnv = mIsAppProduction
+            platform = mPlatform,
+            xApiKeyTracking = mXApiKeyTracking,
+            xApiKey = mXApiKey,
+            isProductionEnv = mIsAppProduction,
+            isDarkMode = mIsDarkMode
         )
         quickPayDialog = MainQuickPayDialog(
             activity = mActivity,

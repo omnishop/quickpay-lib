@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/_17sdp"
-        android:background="@color/bg_quick_pay"
         app:cardCornerRadius="@dimen/_7sdp"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp">
@@ -22,7 +21,7 @@
                 android:id="@+id/motionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/bg_quick_pay"
+                android:background="@color/bg_default"
                 android:visibility="visible">
 
                 <LinearLayout
@@ -51,7 +50,7 @@
                             android:ellipsize="end"
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:textColor="@color/color_484848"
+                            android:textColor="@color/textPrimaryColor_default"
                             android:textSize="@dimen/_6ssp"
                             android:visibility="visible"
                             app:type="bold" />
@@ -121,7 +120,7 @@
                                 android:layout_toRightOf="@+id/sale_price"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:textColor="@color/color_4A4A4A"
+                                android:textColor="@color/textSecondaryColor_default"
                                 android:textSize="@dimen/_5ssp"
                                 android:visibility="visible"
                                 app:type="medium" />
@@ -153,7 +152,7 @@
                                 android:layout_toRightOf="@+id/ivSort1"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:textColor="@color/color_4A4A4A"
+                                android:textColor="@color/textSecondaryColor_default"
                                 android:textSize="@dimen/_5ssp"
                                 android:visibility="visible"
                                 app:type="medium" />
@@ -185,7 +184,7 @@
                                 android:layout_toRightOf="@+id/ivSort2"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:textColor="@color/color_4A4A4A"
+                                android:textColor="@color/textSecondaryColor_default"
                                 android:textSize="@dimen/_5ssp"
                                 android:visibility="visible"
                                 app:type="medium" />
@@ -217,7 +216,7 @@
                                 android:layout_toRightOf="@+id/ivSort3"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:textColor="@color/color_4A4A4A"
+                                android:textColor="@color/textSecondaryColor_default"
                                 android:textSize="@dimen/_5ssp"
                                 android:visibility="visible"
                                 app:type="medium" />
@@ -249,7 +248,7 @@
                                 android:layout_toRightOf="@+id/ivSort4"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:textColor="@color/color_4A4A4A"
+                                android:textColor="@color/textSecondaryColor_default"
                                 android:textSize="@dimen/_5ssp"
                                 android:visibility="visible"
                                 app:type="medium" />
@@ -279,7 +278,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:background="@drawable/background_button_selector"
+                            android:background="@drawable/background_button_selector_default"
                             android:focusable="true"
                             android:focusableInTouchMode="true">
 
@@ -295,14 +294,14 @@
                                     android:layout_height="@dimen/_8sdp"
                                     android:layout_centerVertical="true"
                                     android:layout_marginRight="@dimen/_2sdp"
-                                    android:src="@drawable/ic_thunder_selector" />
+                                    android:src="@drawable/ic_thunder_selector_default" />
 
                                 <com.bda.quickpay_lib.utils.view.SfTextView
                                     android:id="@+id/tvQuickPay"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Mua hàng nhanh"
-                                    android:textColor="@drawable/selector_button_header"
+                                    android:textColor="@drawable/selector_button_header_default"
                                     android:textSize="@dimen/_6ssp"
                                     app:type="medium" />
 
@@ -317,7 +316,8 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:background="@drawable/background_button_selector"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@drawable/background_button_selector_default"
                             android:focusable="true"
                             android:focusableInTouchMode="true">
 
@@ -327,20 +327,12 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center">
 
-                                <ImageView
-                                    android:id="@+id/img_off_ad"
-                                    android:layout_width="@dimen/_8sdp"
-                                    android:layout_height="@dimen/_8sdp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginRight="@dimen/_2sdp"
-                                    android:src="@drawable/ic_bell_selector" />
-
                                 <com.bda.quickpay_lib.utils.view.SfTextView
                                     android:id="@+id/tvOffAd"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Tắt trong video này"
-                                    android:textColor="@drawable/selector_button_header"
+                                    android:text="Bỏ qua"
+                                    android:textColor="@drawable/selector_button_header_default"
                                     android:textSize="@dimen/_6ssp"
                                     app:type="medium" />
 
@@ -354,12 +346,11 @@
                             android:layout_below="@+id/ll_off_ad"
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:background="#00000000"
                             android:gravity="center"
                             android:text="Đóng sau (1s)"
                             android:textAllCaps="false"
-                            android:textColor="@color/color_4A4A4A"
+                            android:textColor="@color/textSecondaryColor_default"
                             android:textSize="@dimen/_6ssp"
                             android:visibility="visible"
                             app:type="bold" />
@@ -377,7 +368,7 @@
                                 android:id="@+id/bn_add_to_cart"
                                 android:layout_width="@dimen/_87sdp"
                                 android:layout_height="@dimen/_19sdp"
-                                android:background="@drawable/background_button_selector"
+                                android:background="@drawable/background_button_selector_default"
                                 android:focusable="true"
                                 android:focusableInTouchMode="true">
 
@@ -399,7 +390,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Thêm vào giỏ hàng"
-                                        android:textColor="@drawable/selector_button_header"
+                                        android:textColor="@drawable/selector_button_header_default"
                                         android:textSize="@dimen/_8ssp" />
 
                                 </LinearLayout>
@@ -411,7 +402,7 @@
                                 android:layout_width="@dimen/_19sdp"
                                 android:layout_height="@dimen/_19sdp"
                                 android:layout_alignParentRight="true"
-                                android:background="@drawable/background_button_selector"
+                                android:background="@drawable/background_button_selector_default"
                                 android:focusable="true"
                                 android:focusableInTouchMode="true">
 
@@ -453,7 +444,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Nhà cung cấp"
-                                android:textColor="@color/color_484848"
+                                android:textColor="@color/textPrimaryColor_default"
                                 android:textSize="@dimen/_8ssp"
                                 android:visibility="visible" />
 
@@ -515,7 +506,7 @@
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
                                     android:maxLines="1"
-                                    android:textColor="@color/color_484848"
+                                    android:textColor="@color/textPrimaryColor_default"
                                     android:textSize="@dimen/_6ssp"
                                     android:visibility="visible" />
 
