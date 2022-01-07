@@ -10,12 +10,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val buttn = findViewById<Button>(R.id.btnQuick)
-        var isDarkMode = false
+        val btnVoucher = findViewById<Button>(R.id.btnVoucher)
+        var isDarkMode = true
         buttn.setOnClickListener {
             val aa = QuickPayDialog.Builder()
                 .setUserId("92225949")
                 .setUserPhone("0982763842")
                 .setProductId("0x14ba1")
+                .setPlatform("box2019")
+                .setXApiKey("OGYRcR4E6SpGC0PB")
+                .setXApiKeyTracking("TzptM3vWlQ90XqEb")
+                .setIsAppProduction(false)
+                .setDarkMode(isDarkMode)
+                .setOnQuickPayListener(object : QuickPayDialog.QuickPayListener {
+                    override fun onQuickPayExit() {
+
+                    }
+                })
+                .build()
+            if (aa != null && !aa.isPopupShowing()) {
+                aa.show(this, supportFragmentManager)
+            }
+            isDarkMode = !isDarkMode
+        }
+
+        btnVoucher.setOnClickListener {
+            val aa = QuickPayDialog.Builder()
+                .setUserId("92225949")
+                .setUserPhone("0982763842")
+                .setVoucherId("0x14ba1")
                 .setPlatform("box2019")
                 .setXApiKey("OGYRcR4E6SpGC0PB")
                 .setXApiKeyTracking("TzptM3vWlQ90XqEb")

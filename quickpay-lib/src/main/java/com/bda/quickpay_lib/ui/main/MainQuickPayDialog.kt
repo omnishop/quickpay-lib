@@ -19,6 +19,7 @@ import com.bda.quickpay_lib.ui.addToCartSuccess.AddToCartSuccessFragment
 import com.bda.quickpay_lib.ui.chooseVoucher.ChooseVoucherFragment
 import com.bda.quickpay_lib.ui.detailCart.DetailCartFragment
 import com.bda.quickpay_lib.ui.detailProduct.DetailProductFragment
+import com.bda.quickpay_lib.ui.detailVoucher.DetailVoucherFragment
 import com.bda.quickpay_lib.ui.quickPay.QuickPayFragment
 import kotlinx.android.synthetic.main.dialog_quickpay.*
 
@@ -28,20 +29,21 @@ class MainQuickPayDialog(
     private val fptId: String,
     private val phone: String,
     private val productId: String,
+    private val voucherId: String,
     private val platform: String,
-    private val xApiKey: String,
-    private val xApiKeyTracking: String,
     private val onQuickPayExit: () -> Unit
 ) : DialogFragment(),
     QuickPayFragment.onQuickpayListener,
     DetailCartFragment.onAddToCartListener,
     DetailProductFragment.onDetailProductListener,
     AddToCartSuccessFragment.onAddToCartSuccessListener,
+    DetailVoucherFragment.onDetailVoucherListener,
     OrderSuccessFragment.onQuickpayListener {
 
     private var fm: FragmentManager? = null
     private var ft: FragmentTransaction? = null
     private var detailProductFragment: DetailProductFragment? = null
+    private var detailVoucherFragment: DetailVoucherFragment? = null
     private var addToCartFragment: DetailCartFragment? = null
     private var quickPayFragment: QuickPayFragment? = null
     private var successFragment: OrderSuccessFragment? = null
@@ -57,27 +59,40 @@ class MainQuickPayDialog(
         savedInstanceState: Bundle?
     ): View? {
         detailProductFragment = DetailProductFragment.newInstance()
+        detailVoucherFragment = DetailVoucherFragment()
         quickPayFragment = QuickPayFragment.newInstance(platform)
         successFragment = OrderSuccessFragment.newInstance()
         addToCartSuccessFragment = AddToCartSuccessFragment.newInstance()
         addToCartFragment = DetailCartFragment.newInstance()
 
         detailProductFragment?.setListener(this)
+        detailVoucherFragment?.setListener(this)
         quickPayFragment?.setListener(this)
         successFragment?.setListener(this)
         addToCartSuccessFragment?.setListener(this)
         addToCartFragment?.setListener(this)
 
-        detailProductFragment?.let {
-            var bundle = bundleOf(
-                "STR_FPT_PLAY_ID" to fptId,
-                "STR_PHONE" to phone,
-                "STR_PRODUCT_ID" to productId,
-            )
-            it.arguments = bundle
-            loadFragment(it, R.id.container_body, true)
+        if(!productId.isNullOrEmpty()){
+            detailProductFragment?.let {
+                var bundle = bundleOf(
+                    "STR_FPT_PLAY_ID" to fptId,
+                    "STR_PHONE" to phone,
+                    "STR_PRODUCT_ID" to productId,
+                )
+                it.arguments = bundle
+                loadFragment(it, R.id.container_body, true)
+            }
+        } else {
+            detailVoucherFragment?.let {
+                var bundle = bundleOf(
+                    "STR_FPT_PLAY_ID" to fptId,
+                    "STR_PHONE" to phone,
+                    "STR_PRODUCT_ID" to productId,
+                )
+                it.arguments = bundle
+                loadFragment(it, R.id.container_body, true)
+            }
         }
-
         return inflater.inflate(R.layout.dialog_quickpay, container)
     }
 
@@ -201,7 +216,7 @@ class MainQuickPayDialog(
     override fun onSubmitOrderSuccess(orderId: String, product: Product, totalPrice: String) {
         val bundle = bundleOf(
             "STR_ORDER_ID" to orderId,
-//            "STR_PRODUCT_QUANTITY" to product.quantity,
+            "STR_PRODUCT_QUANTITY" to product.order_quantity,
             "STR_PRODUCT_NAME" to product.name,
             "STR_PRODUCT_SUPPLIER_TIME" to product.supplier?.shipping_time,
             "STR_PRODUCT_TOTAL_PRICE" to totalPrice
@@ -265,6 +280,14 @@ class MainQuickPayDialog(
 
     fun isDialogShowing(): Boolean {
         return isShowing
+    }
+
+    override fun onReceiveVoucherClick(voucherId: String) {
+        // todo
+    }
+
+    override fun onSkipVoucherClick() {
+        this?.dismiss()
     }
 
 }

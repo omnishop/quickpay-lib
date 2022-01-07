@@ -10,8 +10,10 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/_17sdp"
         app:cardCornerRadius="@dimen/_7sdp"
+        app:cardBackgroundColor="@color/trans"
         app:cardElevation="0dp"
-        app:cardMaxElevation="0dp">
+        app:cardMaxElevation="0dp"
+        app:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -338,22 +340,6 @@
 
                             </LinearLayout>
                         </RelativeLayout>
-
-                        <com.bda.quickpay_lib.utils.view.SfTextView
-                            android:id="@+id/tvTimeout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ll_off_ad"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center"
-                            android:background="#00000000"
-                            android:gravity="center"
-                            android:text="Đóng sau (1s)"
-                            android:textAllCaps="false"
-                            android:textColor="@color/textSecondaryColor_default"
-                            android:textSize="@dimen/_6ssp"
-                            android:visibility="visible"
-                            app:type="bold" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"

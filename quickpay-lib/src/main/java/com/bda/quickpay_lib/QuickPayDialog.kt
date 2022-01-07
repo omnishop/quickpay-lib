@@ -2,6 +2,7 @@ package com.bda.quickpay_lib
 
 import android.app.Activity
 import androidx.fragment.app.FragmentManager
+import com.bda.quickpay_lib.ui.detailVoucher.DetailVoucherFragment
 import com.bda.quickpay_lib.ui.main.MainQuickPayDialog
 import com.bda.quickpay_lib.utils.QuickPayUtils
 
@@ -9,6 +10,7 @@ class QuickPayDialog(builder: Builder) {
     private var mUserId: String = builder.userId
     private var mUserPhone: String = builder.userPhone
     private var mProductID: String = builder.productId
+    private var mVoucherID: String = builder.voucherId
     private var mPlatform: String = builder.platform
     private var mListener: QuickPayListener? = builder.listener
     private var mXApiKey: String = builder.xApiKey
@@ -16,12 +18,14 @@ class QuickPayDialog(builder: Builder) {
     private var mIsAppProduction: Boolean = builder.isAppProduction
     private var mXApiKeyTracking: String = builder.xApiKeyTracking
     private var quickPayDialog: MainQuickPayDialog? = null
+    private var voucherDialog: DetailVoucherFragment? = null
 
     class Builder() {
         var userId: String = ""
         var isDardMode: Boolean = false
         var userPhone: String = ""
         var productId: String = ""
+        var voucherId: String = ""
         var platform: String = ""
         var xApiKey: String = ""
         var xApiKeyTracking: String = ""
@@ -45,6 +49,11 @@ class QuickPayDialog(builder: Builder) {
 
         fun setProductId(mProductId: String): Builder {
             this.productId = mProductId
+            return this
+        }
+
+        fun setVoucherId(mVoucherId: String): Builder {
+            this.voucherId = mVoucherId
             return this
         }
 
@@ -99,9 +108,8 @@ class QuickPayDialog(builder: Builder) {
             fptId = mUserId,
             phone = mUserPhone,
             productId = mProductID,
+            voucherId = mVoucherID,
             platform = mPlatform,
-            xApiKey = mXApiKey,
-            xApiKeyTracking = mXApiKeyTracking,
             {
                 mListener?.onQuickPayExit()
             }
@@ -110,6 +118,7 @@ class QuickPayDialog(builder: Builder) {
     }
 
     fun stop() {
+        quickPayDialog?.dismiss()
         quickPayDialog?.dismiss()
 
     }

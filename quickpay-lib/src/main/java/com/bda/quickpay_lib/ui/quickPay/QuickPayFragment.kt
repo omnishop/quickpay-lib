@@ -463,4 +463,9 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
             Functions.showMessage(it, message)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.disposeAPI()
+    }
 }

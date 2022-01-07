@@ -48,7 +48,6 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
     private var btnOffAd: RelativeLayout? = null
     private var btnQuickPay: RelativeLayout? = null
     private var btnWishList: RelativeLayout? = null
-    private var tvTimeout: SfTextView? = null
     private var motionLayout: RelativeLayout? = null
     private var ivSort1: ImageView? = null
     private var tvShortDes1: SfTextView? = null
@@ -96,7 +95,6 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
         btnWishList = view.findViewById(R.id.bn_wish_list)
         icQuickPay = view.findViewById(R.id.img_quick_pay)
         tvQuickPay = view.findViewById(R.id.tvQuickPay)
-        tvTimeout = view.findViewById(R.id.tvTimeout)
         ivSort1 = view.findViewById(R.id.ivSort1)
         tvShortDes1 = view.findViewById(R.id.short_des_1)
         ivSort2 = view.findViewById(R.id.ivSort2)
@@ -116,10 +114,9 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
         super.onViewCreated(view, savedInstanceState)
         var timer: CountDownTimer? = null
         if (isFirstOpen) {
-            tvTimeout?.visibility = View.VISIBLE
             timer = object : CountDownTimer(15000 + 1000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
-                    tvTimeout?.text = "Đóng sau " + "(" + (millisUntilFinished / 1000) + "s)"
+                    tvOffAdd?.text = "Bỏ qua " + "(" + (millisUntilFinished / 1000) + "s)"
                 }
 
                 override fun onFinish() {
@@ -130,7 +127,7 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
             isFirstOpen = false
         } else {
             timer?.cancel()
-            tvTimeout?.visibility = View.GONE
+            tvOffAdd?.text = "Bỏ qua"
         }
 
         btnQuickPay?.setOnClickListener {
@@ -245,7 +242,6 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
             requireActivity().getDrawable(R.drawable.background_button_selector_dark)
         tvOffAdd?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
         tvQuickPay?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
-        tvTimeout?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_dark))
         icQuickPay?.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_thunder_selector_dark))
     }
 
@@ -264,7 +260,6 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
             requireActivity().getDrawable(R.drawable.background_button_selector_default)
         tvOffAdd?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
         tvQuickPay?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
-        tvTimeout?.setTextColor(requireActivity().getColorStateList(R.color.selector_button_header_default))
         icQuickPay?.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_thunder_selector_default))
     }
 
@@ -502,5 +497,10 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 
     fun setIsFistOpen(mIsFistOpen: Boolean) {
         this.isFirstOpen = mIsFistOpen
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.disposeAPI()
     }
 }

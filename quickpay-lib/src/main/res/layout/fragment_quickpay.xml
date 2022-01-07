@@ -10,6 +10,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/_17sdp"
         app:cardCornerRadius="@dimen/_7sdp"
+        app:cardBackgroundColor="@color/trans"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
         app:cardUseCompatPadding="true">
