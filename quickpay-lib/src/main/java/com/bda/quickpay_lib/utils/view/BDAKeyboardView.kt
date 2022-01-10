@@ -19,6 +19,7 @@ import com.bda.quickpay_lib.R
 import com.bda.quickpay_lib.utils.FontUtils
 import com.bda.quickpay_lib.utils.Functions
 
+
 class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
     private val row1 = arrayOf(
         Key("q"),
@@ -57,7 +58,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
             R.drawable.abc_right_selector,
             R.drawable.keyboard_border_selector
         ),
-        Key("Xoá")
+        Key(context.getString(R.string.del))
     )
 
     private val row3 = arrayOf(
@@ -68,8 +69,8 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         Key("b"),
         Key("n"),
         Key("m"),
-        Key("Dấu cách"),
-        Key("Hoàn tất"),
+        Key(context.getString(R.string.space)),
+        Key(context.getString(R.string.text_hoan_tat_low)),
         Key(
             "down",
             R.drawable.abc_next_selector,
@@ -78,7 +79,6 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
     )
 
     private val numberSpace123456789 = arrayOf(
-        Key("SPACE"),
         Key("1"),
         Key("2"),
         Key("3"),
@@ -89,18 +89,16 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         Key("8"),
         Key("9"),
         Key("0"),
-        Key("abc"),
-        Key("#+-"),
         Key(
             "delete",
             R.drawable.abc_delete_white_selector,
             R.drawable.keyboard_border_selector
         ),
-        Key("XONG")
+        Key(context.getString(R.string.text_hoan_tat_low))
     )
 
     private val numberOnly = arrayOf(
-        Key("SPACE"),
+        Key(context.getString(R.string.space)),
         Key("1"),
         Key("2"),
         Key("3"),
@@ -116,11 +114,11 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
             R.drawable.abc_delete_white_selector,
             R.drawable.keyboard_border_selector
         ),
-        Key("XONG")
+        Key(context.getString(R.string.text_hoan_tat_low))
     )
 
     private val characterLine1 = arrayOf(
-        Key("SPACE"),
+        Key(context.getString(R.string.space)),
         Key("["),
         Key("]"),
         Key("{"),
@@ -133,7 +131,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         Key("="),
         Key("123"),
         Key("abc"),
-        Key("XONG")
+        Key(context.getString(R.string.text_hoan_tat_low))
     )
 
     private val characterLine2 = arrayOf(
@@ -157,7 +155,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
     )
 
     private val nameLine1 = arrayOf(
-        Key("SPACE"),
+        Key(context.getString(R.string.space)),
         Key("a"),
         Key("b"),
         Key("c"),
@@ -181,7 +179,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
     )
 
     private val nameUpperLine1 = arrayOf(
-        Key("SPACE"),
+        Key(context.getString(R.string.space)),
         Key("A"),
         Key("B"),
         Key("C"),
@@ -221,9 +219,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         Key("x"),
         Key("y"),
         Key("z"),
-        Key("123"),
-        Key("#+-"),
-        Key("XONG")
+        Key(context.getString(R.string.text_hoan_tat_low))
     )
 
     private val nameUpperLine2 = arrayOf(
@@ -243,9 +239,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         Key("X"),
         Key("Y"),
         Key("Z"),
-        Key("123"),
-        Key("#+-"),
-        Key("XONG")
+        Key(context.getString(R.string.text_hoan_tat_low))
     )
 
     private val numbers1 = arrayOf(
@@ -309,7 +303,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
             R.drawable.abc_right_selector,
             R.drawable.keyboard_border_selector
         ),
-        Key("Xoá"),
+        Key(context.getString(R.string.del)),
         Key("@")
     )
     private val row6 = arrayOf(
@@ -320,8 +314,8 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         Key("B"),
         Key("N"),
         Key("M"),
-        Key("Dấu cách"),
-        Key("Hoàn tất"),
+        Key(context.getString(R.string.del)),
+        Key(context.getString(R.string.text_hoan_tat_low)),
         Key(
             "down",
             R.drawable.abc_next_selector,
@@ -329,7 +323,6 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         )
 
     )
-
 
     private var mCallback: OnKeyboardCallback? = null
     private var mQuery: StringBuffer = StringBuffer()
@@ -355,14 +348,13 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         if (!isInEditMode) {
             this.setPadding(
                 0,
-                (resources.displayMetrics.density * 24).toInt(),
+                resources.getDimension(R.dimen._17sdp).toInt(),
                 0,
-                (resources.displayMetrics.density * 24).toInt()
+                resources.getDimension(R.dimen._17sdp).toInt()
             )
-
             orientation = VERTICAL
             gravity = Gravity.CENTER
-            createPhoneView()
+            createNumberView()
             onFocusChangeListener = this
         }
     }
@@ -371,9 +363,9 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         if (!isInEditMode) {
             this.setPadding(
                 0,
-                (resources.displayMetrics.density * 24).toInt(),
+                resources.getDimension(R.dimen._17sdp).toInt(),
                 0,
-                (resources.displayMetrics.density * 24).toInt()
+                resources.getDimension(R.dimen._17sdp).toInt()
             )
             orientation = VERTICAL
             gravity = Gravity.CENTER
@@ -386,9 +378,9 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         if (!isInEditMode) {
             this.setPadding(
                 0,
-                (resources.displayMetrics.density * 18).toInt(),
+                resources.getDimension(R.dimen._10sdp).toInt(),
                 0,
-                (resources.displayMetrics.density * 18).toInt()
+                resources.getDimension(R.dimen._10sdp).toInt()
             )
             orientation = VERTICAL
             gravity = Gravity.CENTER
@@ -396,6 +388,21 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
             onFocusChangeListener = this
         }
     }
+
+    /*fun initKeyboardVaucher() {
+        if (!isInEditMode) {
+            this.setPadding(
+                0,
+                resources.getDimension(R.dimen._17sdp).toInt(),
+                0,
+                resources.getDimension(R.dimen._17sdp).toInt()
+            )
+            orientation = VERTICAL
+            gravity = Gravity.CENTER
+            createABCVaucher()
+            onFocusChangeListener = this
+        }
+    }*/
 
 
     @Suppress("SENSELESS_COMPARISON")
@@ -405,34 +412,28 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         row.orientation = HORIZONTAL
 
         val textSize: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            (resources.displayMetrics.density * 7).toInt()
+            resources.getDimension(R.dimen._4ssp).toInt()
         } else {
-            (resources.displayMetrics.density * 9).toInt()
+            resources.getDimension(R.dimen._5ssp).toInt()
         }
-        val margin = (resources.displayMetrics.density * 7).toInt()
-        val height = (resources.displayMetrics.density * 36).toInt()
-        val width = (resources.displayMetrics.density * 30).toInt()
+        val margin = resources.getDimension(R.dimen._4sdp).toInt()
+        val height = resources.getDimension(R.dimen._19sdp).toInt()
+        val width = resources.getDimension(R.dimen._15sdp).toInt()
         if (cells != null && cells.isNotEmpty()) {
             for (cell in cells) {
                 if (cell.resourceId > 0) {
                     val params =
-                        LayoutParams( (resources.displayMetrics.density * 60).toInt(), height)
+                        LayoutParams(resources.getDimension(R.dimen._30sdp).toInt(), height)
                     val button = createKeyWithIcon(cell, margin, params)
                     row.addView(button)
                 } else {
                     val params: LayoutParams = if (cell.name.length > 1) {
                         when (cell.name) {
-                            "XONG" -> {
-                                LayoutParams(
-                                    (resources.displayMetrics.density * 60).toInt(),
-                                    height
-                                )
+                            context.getString(R.string.text_hoan_tat_low) -> {
+                                LayoutParams(resources.getDimension(R.dimen._30sdp).toInt(), height)
                             }
-                            "SPACE" -> {
-                                LayoutParams(
-                                    (resources.displayMetrics.density * 60).toInt(),
-                                    height
-                                )
+                            context.getString(R.string.space) -> {
+                                LayoutParams(resources.getDimension(R.dimen._30sdp).toInt(), height)
                             }
                             else -> {
                                 LayoutParams(width, height)
@@ -457,15 +458,10 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         val cardView = CardView(context)
         val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         lp.setMargins(margin, margin, margin, margin)
-        cardView.maxCardElevation = resources.displayMetrics.density * 2
-        cardView.cardElevation = resources.displayMetrics.density * 2
-        cardView.setCardBackgroundColor(
-            ContextCompat.getColor(
-                context,
-                R.color.color_translucent
-            )
-        )
-        cardView.radius = resources.displayMetrics.density * 3
+        cardView.maxCardElevation = resources.getDimension(R.dimen._1sdp)
+        cardView.cardElevation = resources.getDimension(R.dimen._1sdp)
+        cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.trans))
+        cardView.radius = resources.getDimension(R.dimen._3sdp)
         cardView.layoutParams = lp
 
         val button = ImageButton(context)
@@ -480,7 +476,6 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
                 key.name
             )
         }
-        button.layoutParams = params
         button.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 button.setColorFilter(
@@ -495,7 +490,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
                 button.setColorFilter(ContextCompat.getColor(context, R.color.color_white))
             }
         }
-
+        button.layoutParams = params
         cardView.addView(button)
         return cardView
     }
@@ -509,15 +504,10 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
         val cardView = CardView(context)
         val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         lp.setMargins(margin, margin, margin, margin)
-        cardView.maxCardElevation = resources.displayMetrics.density * 2
-        cardView.cardElevation = resources.displayMetrics.density * 2
-        cardView.setCardBackgroundColor(
-            ContextCompat.getColor(
-                context,
-                R.color.color_translucent
-            )
-        )
-        cardView.radius = resources.displayMetrics.density * 3
+        cardView.maxCardElevation = resources.getDimension(R.dimen._1sdp)
+        cardView.cardElevation = resources.getDimension(R.dimen._1sdp)
+        cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.trans))
+        cardView.radius = resources.getDimension(R.dimen._3sdp)
         cardView.layoutParams = lp
 
         val button = TextView(context)
@@ -563,10 +553,6 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
     @Suppress("SENSELESS_COMPARISON")
     private fun detectKeyWithCustomAction(text: String) {
         when (text) {
-            "123" -> {
-                replaceABCToNumberView()
-                return
-            }
             "upper" -> {
                 replaceUpperView()
                 return
@@ -575,23 +561,19 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
                 replaceLowerView()
                 return
             }
+            "123" -> {
+                replaceABCToNumberView()
+                return
+            }
             "abc" -> {
-                replaceUpperView()
+                replaceNumberToABCView()
                 return
             }
-            "#+-" -> {
-                replaceCharacterView()
-                return
-            }
-            "Dấu cách" -> {
+            context.getString(R.string.space) -> {
                 mQuery.insert(cursor, " ")
                 cursor++
             }
-            "SPACE" -> {
-                mQuery.insert(cursor, " ")
-                cursor++
-            }
-            "Xoá" -> {
+            context.getString(R.string.del) -> {
                 mQuery.delete(0, mQuery.length)
                 cursor = 0
             }
@@ -622,12 +604,7 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
                     mCallback!!.onNext()
                 }
             }
-            "Hoàn tất" -> {
-                if (mCallback != null) {
-                    mCallback!!.onComplete()
-                }
-            }
-            "XONG" -> {
+            context.getString(R.string.text_hoan_tat_low) -> {
                 if (mCallback != null) {
                     mCallback!!.onComplete()
                 }
@@ -641,6 +618,10 @@ class BDAKeyboardView : LinearLayout, View.OnFocusChangeListener {
             mCallback!!.onSearchSubmit(mQuery.toString(), cursor)
         }
     }
+
+    /*fun searchVoice(text: String?) {
+        if (mCallback != null) mCallback!!.onSearchSubmit(text, cursor)
+    }*/
 
     fun addText(text: String) {
         mQuery.insert(0, text)

@@ -38,7 +38,7 @@ class DetailVoucherFragment : BaseFragment(), DetailVoucherContract.View {
         bn_off_ad?.setOnClickListener {
             mListener?.onSkipVoucherClick()
         }
-        bn_off_ad?.setOnClickListener {
+        bn_receive?.setOnClickListener {
             mListener?.onReceiveVoucherClick("")
         }
         bn_off_ad?.setOnFocusChangeListener { v, hasFocus ->

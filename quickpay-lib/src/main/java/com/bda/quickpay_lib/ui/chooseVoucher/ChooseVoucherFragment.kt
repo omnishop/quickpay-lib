@@ -139,13 +139,13 @@ class ChooseVoucherFragment : Fragment(), ChooseVoucherContract.View {
 //                        customerId = user!!.uid
 //                    )
 //                }
-                voucher_list?.apply {
-//                    adapter = mAdapter
-                }
+//                voucher_list?.apply {
+////                    adapter = mAdapter
+//                }
             }
         } else {
             text_choose_voucher?.visibility = View.GONE
-            voucher_list?.visibility = View.GONE
+//            voucher_list?.visibility = View.GONE
 
             edt_voucher?.nextFocusDownId = bn_confirm.id
             bn_confirm?.nextFocusUpId = edt_voucher.id
@@ -171,31 +171,31 @@ class ChooseVoucherFragment : Fragment(), ChooseVoucherContract.View {
     }
 
     fun myOnkeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN && voucher_list != null && voucher_list.hasFocus()
-            && voucher_list.visibility == View.VISIBLE
-        ) {
-            if (mAdapter != null && mAdapter!!.isFocusBottom) {
-                bn_confirm.requestFocus()
-                return true
-            }
-        }
-
-        if (keyCode == KeyEvent.KEYCODE_DPAD_UP && voucher_list != null
-            && voucher_list.hasFocus() && voucher_list.visibility == View.VISIBLE
-        ) {
-            if (mAdapter != null && mAdapter!!.isFocusTop) {
-                edt_voucher.requestFocus()
-                return true
-            }
-        }
-
-        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && voucher_list.hasFocus() && voucher_list.visibility == View.VISIBLE) {
-            return true
-        }
-
-        if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && voucher_list.hasFocus() && voucher_list.visibility == View.VISIBLE) {
-            return true
-        }
+//        if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN && voucher_list != null && voucher_list.hasFocus()
+//            && voucher_list.visibility == View.VISIBLE
+//        ) {
+//            if (mAdapter != null && mAdapter!!.isFocusBottom) {
+//                bn_confirm.requestFocus()
+//                return true
+//            }
+//        }
+//
+//        if (keyCode == KeyEvent.KEYCODE_DPAD_UP && voucher_list != null
+//            && voucher_list.hasFocus() && voucher_list.visibility == View.VISIBLE
+//        ) {
+//            if (mAdapter != null && mAdapter!!.isFocusTop) {
+//                edt_voucher.requestFocus()
+//                return true
+//            }
+//        }
+//
+//        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && voucher_list.hasFocus() && voucher_list.visibility == View.VISIBLE) {
+//            return true
+//        }
+//
+//        if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && voucher_list.hasFocus() && voucher_list.visibility == View.VISIBLE) {
+//            return true
+//        }
 
         return false
     }

@@ -4,6 +4,8 @@ import android.content.Context
 import com.bda.quickpay_lib.api.APIManager
 import com.bda.quickpay_lib.models.request.ProductByUiRequest
 import com.bda.quickpay_lib.models.request.ProfileByUIDRequest
+import com.bda.quickpay_lib.models.response.CheckCustomerResponse
+import com.bda.quickpay_lib.utils.QuickPayUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -20,7 +22,6 @@ class DetailProductPresenter(view: DetailProductContract.View, context: Context)
     }
 
     override fun getProfile(mFptId: String, phone: String) {
-        mView.showProgress()
         mSubscription = APIManager.getInstance().getApi().getProfile(
             ProfileByUIDRequest(
                 phone_number = phone,
@@ -32,12 +33,16 @@ class DetailProductPresenter(view: DetailProductContract.View, context: Context)
             .subscribe({
                 if (it.status == 200) {
                     mView.sendProfileSuccess(it)
+                } else {
+                    val response = CheckCustomerResponse()
+                    response.data.uid = QuickPayUtils.aliasCustomerId
+                    mView.sendProfileSuccess(response)
                 }
             }, { err ->
-                mView.hideProgress()
-                mView.handleError(err)
+                val response = CheckCustomerResponse()
+                response.data.uid = QuickPayUtils.aliasCustomerId
+                mView.sendProfileSuccess(response)
             }, {
-                mView.hideProgress()
             })
     }
 

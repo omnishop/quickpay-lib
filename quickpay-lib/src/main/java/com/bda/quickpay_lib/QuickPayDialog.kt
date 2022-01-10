@@ -2,6 +2,7 @@ package com.bda.quickpay_lib
 
 import android.app.Activity
 import androidx.fragment.app.FragmentManager
+import com.bda.quickpay_lib.models.Product
 import com.bda.quickpay_lib.ui.detailVoucher.DetailVoucherFragment
 import com.bda.quickpay_lib.ui.main.MainQuickPayDialog
 import com.bda.quickpay_lib.utils.QuickPayUtils
@@ -9,7 +10,7 @@ import com.bda.quickpay_lib.utils.QuickPayUtils
 class QuickPayDialog(builder: Builder) {
     private var mUserId: String = builder.userId
     private var mUserPhone: String = builder.userPhone
-    private var mProductID: String = builder.productId
+    private var mProduct: Product = builder.product
     private var mVoucherID: String = builder.voucherId
     private var mPlatform: String = builder.platform
     private var mListener: QuickPayListener? = builder.listener
@@ -18,13 +19,12 @@ class QuickPayDialog(builder: Builder) {
     private var mIsAppProduction: Boolean = builder.isAppProduction
     private var mXApiKeyTracking: String = builder.xApiKeyTracking
     private var quickPayDialog: MainQuickPayDialog? = null
-    private var voucherDialog: DetailVoucherFragment? = null
 
     class Builder() {
         var userId: String = ""
         var isDardMode: Boolean = false
         var userPhone: String = ""
-        var productId: String = ""
+        var product: Product = Product(false)
         var voucherId: String = ""
         var platform: String = ""
         var xApiKey: String = ""
@@ -47,8 +47,8 @@ class QuickPayDialog(builder: Builder) {
             return this
         }
 
-        fun setProductId(mProductId: String): Builder {
-            this.productId = mProductId
+        fun setProduct(mProduct: Product): Builder {
+            this.product = mProduct
             return this
         }
 
@@ -95,7 +95,7 @@ class QuickPayDialog(builder: Builder) {
         }
     }
 
-    fun show(mActivity: Activity, fragmentManager: FragmentManager) {
+    fun showQuickPay(mActivity: Activity, fragmentManager: FragmentManager) {
         QuickPayUtils.initQuickPay(
             platform = mPlatform,
             xApiKeyTracking = mXApiKeyTracking,
@@ -107,9 +107,33 @@ class QuickPayDialog(builder: Builder) {
             activity = mActivity,
             fptId = mUserId,
             phone = mUserPhone,
-            productId = mProductID,
+            product = mProduct,
             voucherId = mVoucherID,
             platform = mPlatform,
+            viewMode = MainQuickPayDialog.VIEW_QUICK_PAY_MODE,
+            {
+                mListener?.onQuickPayExit()
+            }
+        )
+        quickPayDialog?.show(fragmentManager, quickPayDialog?.tag)
+    }
+
+    fun showReceiveVoucher(mActivity: Activity, fragmentManager: FragmentManager) {
+        QuickPayUtils.initQuickPay(
+            platform = mPlatform,
+            xApiKeyTracking = mXApiKeyTracking,
+            xApiKey = mXApiKey,
+            isProductionEnv = mIsAppProduction,
+            isDarkMode = mIsDarkMode
+        )
+        quickPayDialog = MainQuickPayDialog(
+            activity = mActivity,
+            fptId = mUserId,
+            phone = mUserPhone,
+            product = mProduct,
+            voucherId = mVoucherID,
+            platform = mPlatform,
+            viewMode = MainQuickPayDialog.VIEW_VOUCHER_MODE,
             {
                 mListener?.onQuickPayExit()
             }

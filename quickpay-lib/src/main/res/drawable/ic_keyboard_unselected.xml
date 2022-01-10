@@ -5,5 +5,5 @@
         android:endColor="@color/textSecondaryColor_default"
         android:startColor="@color/textSecondaryColor_default"
         android:type="linear" />
-    <corners android:radius="@dimen/_4sdp" />
+    <corners android:radius="@dimen/_2sdp" />
 </shape>

@@ -8,7 +8,7 @@ object QuickPayUtils {
     private var mXpiKey: String = ""
     private var mXpiKeyTracking: String = ""
     private var mIsProductionEnv: Boolean = true
-
+    var aliasCustomerId = "0x8010"
 
     //    fun callLogApi(
 //        mAction: String,

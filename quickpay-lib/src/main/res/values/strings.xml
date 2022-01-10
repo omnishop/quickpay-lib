@@ -3,4 +3,14 @@
     <string name="txt_err_request_timeout">Lỗi kết nối Server</string>
     <string name="txt_err_unauthorized">Lỗi Xác thực</string>
     <string name="txt_err_unknown">Lỗi Unknown</string>
+
+    <string name="del">Xoá</string>
+    <string name="text_hoan_tat_low">XONG</string>
+    <string name="space">SPACE</string>
+
+
+    <string name="tv_receive_voucher_success">Nhận voucher thành công</string>
+    <string name="tv_receive_voucher_message">Vui lòng truy cập vào FPT Play Reward trên Web hoặc Mobile, vào mục quà của tôi để sử dụng voucher.</string>
+
+
 </resources>

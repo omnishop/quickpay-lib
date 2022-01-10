@@ -5,8 +5,8 @@ import android.animation.FloatEvaluator
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -22,9 +22,13 @@ import android.view.WindowManager
 import android.view.animation.AccelerateInterpolator
 import android.widget.ImageView
 import com.bda.quickpay_lib.R
+import com.bda.quickpay_lib.models.Product
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.dialog_message.*
+import org.json.JSONObject
 import java.io.InputStream
 import java.net.URL
+import java.nio.charset.Charset
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -130,6 +134,40 @@ object Functions {
         timer.start()
     }
 
+    fun showPopupVoucherSuccess(context: Context) {
+        val mDialogView = inflate(context, R.layout.dialog_receive_voucher, null) as ViewGroup
+        val messageDialog = AlertDialog.Builder(context)
+            .setOnCancelListener { }
+            .create().apply {
+                setView(mDialogView)
+                setCanceledOnTouchOutside(true)
+                show()
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                window?.attributes!!.windowAnimations = R.style.SlideRightAnimation
+                window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+                window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+                window?.setGravity(Gravity.END)
+                window?.setLayout(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+                val lp = window?.attributes
+                lp?.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
+                this?.window?.attributes = lp
+
+            }
+        val timer = object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+//                messageDialog?.tvTimout?.text = "Đóng " + "(" + (millisUntilFinished / 1000) + ")"
+            }
+
+            override fun onFinish() {
+                messageDialog?.dismiss()
+            }
+        }
+        timer.start()
+    }
+
     @Synchronized
     fun animateScaleUpLiveStream(v: View, scale: Float, duration: Long = 100) {
         v.visibility = View.VISIBLE
@@ -178,6 +216,41 @@ object Functions {
                 imageView?.setImageBitmap(logo)
             }
         }
+    }
+
+    fun loadProduct(context: Context): Product? {
+        return try {
+            val builder = GsonBuilder()
+            val gson = builder.create()
+            val data = JSONObject(loadJSONFromAsset(context, "product.json"))
+            val listProduct = data.getJSONArray("data")
+            if (listProduct.length() >= 1) {
+                return gson.fromJson(listProduct.getString(0), Product::class.java)
+            }
+            return null
+
+        } catch (e: java.lang.Exception) {
+            return null
+        }
+    }
+
+    fun loadJSONFromAsset(context: Context, path: String): String {
+        var json: String = ""
+        var intputStream: InputStream
+        try {
+            val manager: AssetManager = context.getAssets()
+
+            intputStream = manager.open(path)
+            val size: Int = intputStream.available()
+            val buffer = ByteArray(size)
+            intputStream.read(buffer)
+            intputStream.close()
+            json = String(buffer, Charset.defaultCharset())
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return json
+        }
+        return json
     }
 
 }

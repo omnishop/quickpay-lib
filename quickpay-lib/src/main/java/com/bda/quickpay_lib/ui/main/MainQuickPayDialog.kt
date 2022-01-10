@@ -21,6 +21,8 @@ import com.bda.quickpay_lib.ui.detailCart.DetailCartFragment
 import com.bda.quickpay_lib.ui.detailProduct.DetailProductFragment
 import com.bda.quickpay_lib.ui.detailVoucher.DetailVoucherFragment
 import com.bda.quickpay_lib.ui.quickPay.QuickPayFragment
+import com.bda.quickpay_lib.utils.Functions
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.dialog_quickpay.*
 
 
@@ -28,9 +30,10 @@ class MainQuickPayDialog(
     private val activity: Activity,
     private val fptId: String,
     private val phone: String,
-    private val productId: String,
+    private val product: Product,
     private val voucherId: String,
     private val platform: String,
+    private val viewMode: Int,
     private val onQuickPayExit: () -> Unit
 ) : DialogFragment(),
     QuickPayFragment.onQuickpayListener,
@@ -72,22 +75,22 @@ class MainQuickPayDialog(
         addToCartSuccessFragment?.setListener(this)
         addToCartFragment?.setListener(this)
 
-        if(!productId.isNullOrEmpty()){
+        if (viewMode == VIEW_QUICK_PAY_MODE) {
+            val productString = Gson().toJson(product)
             detailProductFragment?.let {
                 var bundle = bundleOf(
                     "STR_FPT_PLAY_ID" to fptId,
                     "STR_PHONE" to phone,
-                    "STR_PRODUCT_ID" to productId,
+                    "STR_PRODUCT" to productString,
                 )
                 it.arguments = bundle
                 loadFragment(it, R.id.container_body, true)
             }
-        } else {
+        } else if (viewMode == VIEW_VOUCHER_MODE) {
             detailVoucherFragment?.let {
                 var bundle = bundleOf(
                     "STR_FPT_PLAY_ID" to fptId,
                     "STR_PHONE" to phone,
-                    "STR_PRODUCT_ID" to productId,
                 )
                 it.arguments = bundle
                 loadFragment(it, R.id.container_body, true)
@@ -283,11 +286,16 @@ class MainQuickPayDialog(
     }
 
     override fun onReceiveVoucherClick(voucherId: String) {
-        // todo
+        Functions.showPopupVoucherSuccess(requireActivity())
     }
 
     override fun onSkipVoucherClick() {
         this?.dismiss()
+    }
+
+    companion object {
+        const val VIEW_QUICK_PAY_MODE = 0
+        const val VIEW_VOUCHER_MODE = 1
     }
 
 }

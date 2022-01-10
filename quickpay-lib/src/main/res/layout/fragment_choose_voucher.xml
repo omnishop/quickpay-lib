@@ -100,16 +100,16 @@
                     android:visibility="invisible"
                     app:type="regular" />
 
-                <androidx.leanback.widget.VerticalGridView
-                    android:id="@+id/voucher_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:nextFocusLeft="@id/voucher_list"
-                    android:nextFocusRight="@id/voucher_list"
-                    android:nextFocusUp="@id/edt_voucher"
-                    android:nextFocusDown="@id/bn_confirm"
-                    android:paddingBottom="@dimen/_3sdp" />
+<!--                <androidx.leanback.widget.VerticalGridView-->
+<!--                    android:id="@+id/voucher_list"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginTop="@dimen/_3sdp"-->
+<!--                    android:nextFocusLeft="@id/voucher_list"-->
+<!--                    android:nextFocusRight="@id/voucher_list"-->
+<!--                    android:nextFocusUp="@id/edt_voucher"-->
+<!--                    android:nextFocusDown="@id/bn_confirm"-->
+<!--                    android:paddingBottom="@dimen/_3sdp" />-->
 
             </LinearLayout>
 

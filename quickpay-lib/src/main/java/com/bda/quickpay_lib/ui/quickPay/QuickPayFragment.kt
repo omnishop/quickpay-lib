@@ -208,8 +208,8 @@ class QuickPayFragment(private val platform: String) : BaseFragment(), QuickPayC
                     product!!.order_quantity = defaultSelectQuality
                     presenter?.submitOrder(
                         customerId = user!!.data.uid,
-                        name = user!!.data.name,
-                        phone = user!!.data.phone,
+                        name = edt_name!!.text.toString(),
+                        phone = edt_phone!!.text.toString(),
                         voucherCode = "",
                         voucherId = "",
                         requestType = 2,

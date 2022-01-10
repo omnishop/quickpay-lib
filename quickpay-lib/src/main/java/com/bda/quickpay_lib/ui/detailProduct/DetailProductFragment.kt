@@ -19,17 +19,18 @@ import com.bda.quickpay_lib.ui.base.BaseFragment
 import com.bda.quickpay_lib.utils.Functions
 import com.bda.quickpay_lib.utils.view.SfStrikeTextView
 import com.bda.quickpay_lib.utils.view.SfTextView
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_detail_product.*
 import kotlinx.android.synthetic.main.fragment_quickpay.img_product_quick_pay
 
 class DetailProductFragment : BaseFragment(), DetailProductContract.View,
     MotionLayout.TransitionListener {
+
     var mListener: onDetailProductListener? = null
     private var presenter: DetailProductPresenter? = null
     private var product: Product? = null
     private var user: CheckCustomerResponse? = null
     private var isFavourite = false
-    private var productId: String = ""
     private var fptId: String = ""
     private var phone: String = ""
     private var isAddToCart: Boolean = false
@@ -66,7 +67,8 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
         arguments?.let {
             fptId = it.getString("STR_FPT_PLAY_ID", "")
             phone = it.getString("STR_PHONE", "")
-            productId = it.getString("STR_PRODUCT_ID", "")
+            val productString = it.getString("STR_PRODUCT", "")
+            product = Gson().fromJson(productString, Product::class.java)
         }
         activity?.let {
             presenter = DetailProductPresenter(this@DetailProductFragment, it)
@@ -104,8 +106,10 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
         ivSort4 = view.findViewById(R.id.ivSort4)
         tvShortDes4 = view.findViewById(R.id.short_des_4)
 
-        presenter?.getProduct(productId)
         presenter?.getProfile(fptId, phone)
+        product?.let {
+            initProduct(it)
+        }
         return view
     }
 
@@ -206,8 +210,6 @@ class DetailProductFragment : BaseFragment(), DetailProductContract.View,
 
     override fun sendProfileSuccess(user: CheckCustomerResponse) {
         this.user = user
-//        presenter?.checkWishList(productId, user.uid)
-//        presenter?.checkCart(userId = user.uid, mProductId = productId)
     }
 
     override fun onResume() {
