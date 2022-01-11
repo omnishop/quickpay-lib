@@ -3,6 +3,7 @@ package com.bda.quickpay_lib.ui.dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.*
 import android.widget.EditText
 import android.widget.TextView
@@ -19,7 +20,7 @@ class KeyboardDialog(
 ) : DialogFragment() {
 
     private var txtError: TextView? = null
-
+    private var maxLength = 128
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,12 +59,14 @@ class KeyboardDialog(
                     tvTitle.text = "Nhập họ và tên"
                     tvHint.text = "Quý khách vui lòng nhập tên người mua hàng"
                     edtName.text = content
+                    maxLength = 128
                     keyboard.initKeyboardName()
                 }
                 KEYBOARD_ADDRESS_TYPE -> {
                     tvTitle.text = "Nhập địa chỉ"
                     tvHint.text = "Quý khách vui lòng nhập địa chỉ giao hàng"
                     edtName.text = content
+                    maxLength = 128
                     keyboard.initKeyboardAddress()
                 }
                 KEYBOARD_PHONE_TYPE -> {
@@ -71,15 +74,18 @@ class KeyboardDialog(
                     tvHint.text =
                         "Nhập số điện thoại của quý khách để bộ phận CSKH liên hệ và xác nhận đơn hàng."
                     edtName.text = content
+                    maxLength = 10
                     keyboard.initKeyboardNumber()
                 }
             }
             keyboard.setOnKeyboardCallback(object : BDAKeyboardView.OnKeyboardCallback {
                 override fun onSearchSubmit(query: String?, cursor: Int) {
-                    tvContent.setText(query.toString())
-                    tvContent.setSelection(cursor)
-                    tvError.visibility = View.INVISIBLE
-                    edtName.setText(query.toString())
+                    if(query.toString().length <= maxLength){
+                        tvContent.setText(query.toString())
+                        tvContent.setSelection(cursor)
+                        tvError.visibility = View.INVISIBLE
+                        edtName.setText(query.toString())
+                    }
                 }
 
                 override fun onChangeCursor(position: Int) {

@@ -9,8 +9,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/_17sdp"
-        app:cardCornerRadius="@dimen/_7sdp"
         app:cardBackgroundColor="@color/trans"
+        app:cardCornerRadius="@dimen/_7sdp"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
         app:cardUseCompatPadding="true">
@@ -193,6 +193,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center_vertical"
                         android:hint="Nhập số điện thoại"
+                        android:maxLength="10"
                         android:nextFocusLeft="@+id/edt_phone"
                         android:nextFocusRight="@+id/bn_voice_phone"
                         android:nextFocusUp="@+id/edt_name"
