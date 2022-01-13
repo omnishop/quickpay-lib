@@ -5,7 +5,7 @@
 
     <FrameLayout
         android:id="@+id/container_body"
-        android:layout_width="296dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

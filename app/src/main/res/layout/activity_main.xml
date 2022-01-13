@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
+        android:text="Show Quick Pay"
         android:id="@+id/btnQuick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
+        android:text="Show Voucher"
         android:id="@+id/btnVoucher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnBanner"
+        android:text="Show Banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_margin="@dimen/_17sdp"-->
+<!--        app:cardBackgroundColor="@color/trans"-->
+<!--        app:cardCornerRadius="@dimen/_7sdp"-->
+<!--        app:cardElevation="0dp"-->
+<!--        app:cardMaxElevation="0dp"-->
+<!--        app:cardUseCompatPadding="true">-->
+
+<!--        <com.drowsyatmidnight.haint.android_banner_sdk.masterhead_banner.MasterheadBannerView-->
+<!--            android:id="@+id/mastheadBannerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true" />-->
+<!--    </androidx.cardview.widget.CardView>-->
 
 </LinearLayout>

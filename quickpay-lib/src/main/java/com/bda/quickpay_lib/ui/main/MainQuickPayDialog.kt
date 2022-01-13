@@ -16,6 +16,7 @@ import com.bda.quickpay_lib.models.Product
 import com.bda.quickpay_lib.models.response.CheckCustomerResponse
 import com.bda.quickpay_lib.ui.Ordersuccess.OrderSuccessFragment
 import com.bda.quickpay_lib.ui.addToCartSuccess.AddToCartSuccessFragment
+import com.bda.quickpay_lib.ui.banner.BannerFragment
 import com.bda.quickpay_lib.ui.chooseVoucher.ChooseVoucherFragment
 import com.bda.quickpay_lib.ui.detailCart.DetailCartFragment
 import com.bda.quickpay_lib.ui.detailProduct.DetailProductFragment
@@ -37,6 +38,7 @@ class MainQuickPayDialog(
     private val onQuickPayExit: () -> Unit
 ) : DialogFragment(),
     QuickPayFragment.onQuickpayListener,
+    BannerFragment.onOmniBannerListener,
     DetailCartFragment.onAddToCartListener,
     DetailProductFragment.onDetailProductListener,
     AddToCartSuccessFragment.onAddToCartSuccessListener,
@@ -46,6 +48,7 @@ class MainQuickPayDialog(
     private var fm: FragmentManager? = null
     private var ft: FragmentTransaction? = null
     private var detailProductFragment: DetailProductFragment? = null
+    private var bannerFragment: BannerFragment? = null
     private var detailVoucherFragment: DetailVoucherFragment? = null
     private var addToCartFragment: DetailCartFragment? = null
     private var quickPayFragment: QuickPayFragment? = null
@@ -62,6 +65,7 @@ class MainQuickPayDialog(
         savedInstanceState: Bundle?
     ): View? {
         detailProductFragment = DetailProductFragment.newInstance()
+        bannerFragment = BannerFragment()
         detailVoucherFragment = DetailVoucherFragment()
         quickPayFragment = QuickPayFragment.newInstance(platform)
         successFragment = OrderSuccessFragment.newInstance()
@@ -69,6 +73,7 @@ class MainQuickPayDialog(
         addToCartFragment = DetailCartFragment.newInstance()
 
         detailProductFragment?.setListener(this)
+        bannerFragment?.setListener(this)
         detailVoucherFragment?.setListener(this)
         quickPayFragment?.setListener(this)
         successFragment?.setListener(this)
@@ -88,6 +93,15 @@ class MainQuickPayDialog(
             }
         } else if (viewMode == VIEW_VOUCHER_MODE) {
             detailVoucherFragment?.let {
+                var bundle = bundleOf(
+                    "STR_FPT_PLAY_ID" to fptId,
+                    "STR_PHONE" to phone,
+                )
+                it.arguments = bundle
+                loadFragment(it, R.id.container_body, true)
+            }
+        } else {
+            bannerFragment?.let {
                 var bundle = bundleOf(
                     "STR_FPT_PLAY_ID" to fptId,
                     "STR_PHONE" to phone,
@@ -296,6 +310,20 @@ class MainQuickPayDialog(
     companion object {
         const val VIEW_QUICK_PAY_MODE = 0
         const val VIEW_VOUCHER_MODE = 1
+        const val VIEW_BANNER_MODE = 2
+    }
+
+    override fun onAdsClick(product: Product) {
+        val productString = Gson().toJson(product)
+        detailProductFragment?.let {
+            var bundle = bundleOf(
+                "STR_FPT_PLAY_ID" to fptId,
+                "STR_PHONE" to phone,
+                "STR_PRODUCT" to productString,
+            )
+            it.arguments = bundle
+            loadFragment(it, R.id.container_body, true)
+        }
     }
 
 }

@@ -141,6 +141,29 @@ class QuickPayDialog(builder: Builder) {
         quickPayDialog?.show(fragmentManager, quickPayDialog?.tag)
     }
 
+    fun showBanner(mActivity: Activity, fragmentManager: FragmentManager) {
+        QuickPayUtils.initQuickPay(
+            platform = mPlatform,
+            xApiKeyTracking = mXApiKeyTracking,
+            xApiKey = mXApiKey,
+            isProductionEnv = mIsAppProduction,
+            isDarkMode = mIsDarkMode
+        )
+        quickPayDialog = MainQuickPayDialog(
+            activity = mActivity,
+            fptId = mUserId,
+            phone = mUserPhone,
+            product = mProduct,
+            voucherId = mVoucherID,
+            platform = mPlatform,
+            viewMode = MainQuickPayDialog.VIEW_BANNER_MODE,
+            {
+                mListener?.onQuickPayExit()
+            }
+        )
+        quickPayDialog?.show(fragmentManager, quickPayDialog?.tag)
+    }
+
     fun stop() {
         quickPayDialog?.dismiss()
         quickPayDialog?.dismiss()

@@ -21,7 +21,6 @@ class AddToCartSuccessFragment : Fragment() {
     private var product: Product? = null
     private var btnConfirm: RelativeLayout? = null
     private var tvConfirm: SfTextView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

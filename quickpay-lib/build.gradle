@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/annotation-experimental_release.kotlin_module'
+    }
 }
 
 dependencies {
@@ -69,4 +73,8 @@ dependencies {
     implementation('com.github.bumptech.glide:okhttp3-integration:4.7.1') {
         exclude group: 'glide-parent'
     }
+
+    implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.23.0'
+    implementation 'com.google.firebase:firebase-firestore:18.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.8'
 }

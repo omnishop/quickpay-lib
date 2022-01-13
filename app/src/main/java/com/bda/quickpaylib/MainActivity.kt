@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val buttn = findViewById<Button>(R.id.btnQuick)
         val btnVoucher = findViewById<Button>(R.id.btnVoucher)
+        val btnBanner = findViewById<Button>(R.id.btnBanner)
         var isDarkMode = true
         val product = Functions.loadProduct(this)
 
@@ -33,6 +34,28 @@ class MainActivity : AppCompatActivity() {
                 .build()
             if (aa != null && !aa.isPopupShowing()) {
                 aa.showQuickPay(this, supportFragmentManager)
+            }
+            isDarkMode = !isDarkMode
+        }
+
+        btnBanner.setOnClickListener {
+            val aa = QuickPayDialog.Builder()
+                .setUserId("92225949")
+                .setUserPhone("0982763842")
+                .setProduct(product!!)
+                .setPlatform("box2018")
+                .setXApiKey("OGYRcR4E6SpGC0PB")
+                .setXApiKeyTracking("TzptM3vWlQ90XqEb")
+                .setIsAppProduction(true)
+                .setDarkMode(isDarkMode)
+                .setOnQuickPayListener(object : QuickPayDialog.QuickPayListener {
+                    override fun onQuickPayExit() {
+
+                    }
+                })
+                .build()
+            if (aa != null && !aa.isPopupShowing()) {
+                aa.showBanner(this, supportFragmentManager)
             }
             isDarkMode = !isDarkMode
         }

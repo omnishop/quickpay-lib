@@ -10,6 +10,8 @@
         <entry key="quickpay-lib/src/main/res/drawable/background_button_default.xml" value="0.375" />
         <entry key="quickpay-lib/src/main/res/drawable/background_button_selector_dark.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/background_button_selector_default.xml" value="0.115" />
+        <entry key="quickpay-lib/src/main/res/drawable/background_corner_top.xml" value="0.131" />
+        <entry key="quickpay-lib/src/main/res/drawable/background_corner_top_white_50.xml" value="0.131" />
         <entry key="quickpay-lib/src/main/res/drawable/background_delivery_selection.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/background_edit_keyboard.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/background_edit_selector.xml" value="0.115" />
@@ -22,9 +24,11 @@
         <entry key="quickpay-lib/src/main/res/drawable/background_minus_inactive_default.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/background_quickpay_dark.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/background_quickpay_default.xml" value="0.115" />
+        <entry key="quickpay-lib/src/main/res/drawable/background_view_cout_live_stream.xml" value="0.131" />
         <entry key="quickpay-lib/src/main/res/drawable/background_voucher_code.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/dialog_rounded_bg.xml" value="0.125" />
         <entry key="quickpay-lib/src/main/res/drawable/ic_keyboard_unselected.xml" value="0.115" />
+        <entry key="quickpay-lib/src/main/res/drawable/ic_next_gay_live.xml" value="0.131" />
         <entry key="quickpay-lib/src/main/res/drawable/ic_num_gray.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/ic_num_gray_dark.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/ic_num_gray_default.xml" value="0.126" />
@@ -36,12 +40,22 @@
         <entry key="quickpay-lib/src/main/res/drawable/ic_voice_grey_selector_default.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/selector_button_header_dark.xml" value="0.115" />
         <entry key="quickpay-lib/src/main/res/drawable/selector_button_header_default.xml" value="0.115" />
-        <entry key="quickpay-lib/src/main/res/layout/dialog_quickpay.xml" value="0.11510416666666666" />
+        <entry key="quickpay-lib/src/main/res/layout/custome_webview.xml" value="0.9321428571428572" />
+        <entry key="quickpay-lib/src/main/res/layout/dialog_fav.xml" value="0.10104166666666667" />
+        <entry key="quickpay-lib/src/main/res/layout/dialog_quickpay.xml" value="0.1" />
+        <entry key="quickpay-lib/src/main/res/layout/dialog_temp.xml" value="0.134375" />
+        <entry key="quickpay-lib/src/main/res/layout/fragment_banner.xml" value="0.19322916666666667" />
+        <entry key="quickpay-lib/src/main/res/layout/fragment_banner.xml.xml" value="0.10104166666666667" />
         <entry key="quickpay-lib/src/main/res/layout/fragment_choose_voucher.xml" value="0.11510416666666666" />
-        <entry key="quickpay-lib/src/main/res/layout/fragment_detail_product.xml" value="0.335" />
+        <entry key="quickpay-lib/src/main/res/layout/fragment_detail_cart.xml" value="0.10104166666666667" />
+        <entry key="quickpay-lib/src/main/res/layout/fragment_detail_product.xml" value="0.2608286252354049" />
         <entry key="quickpay-lib/src/main/res/layout/fragment_detail_voucher.xml" value="0.25" />
         <entry key="quickpay-lib/src/main/res/layout/fragment_order_success.xml" value="0.2725030826140567" />
         <entry key="quickpay-lib/src/main/res/layout/fragment_quickpay.xml" value="0.2639257294429708" />
+        <entry key="quickpay-lib/src/main/res/layout/item_others_live_stream.xml" value="0.134375" />
+        <entry key="quickpay-lib/src/main/res/layout/item_product_livestream_v3.xml" value="0.134375" />
+        <entry key="quickpay-lib/src/main/res/layout/item_tab_live_stream.xml" value="0.134375" />
+        <entry key="quickpay-lib/src/main/res/xml/activity_live_stream_v3_scene.xml" value="0.1203125" />
       </map>
     </option>
   </component>
