@@ -47,4 +47,8 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="ItemStyle" parent="Theme.MaterialComponents.DayNight">
+        <item name="materialCardViewStyle">@style/Widget.MaterialComponents.CardView</item>
+    </style>
+
 </resources>

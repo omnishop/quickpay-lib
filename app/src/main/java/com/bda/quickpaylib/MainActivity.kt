@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 .setPlatform("box2018")
                 .setXApiKey("OGYRcR4E6SpGC0PB")
                 .setXApiKeyTracking("TzptM3vWlQ90XqEb")
-                .setIsAppProduction(false)
+                .setIsAppProduction(true)
                 .setDarkMode(isDarkMode)
                 .setOnQuickPayListener(object : QuickPayDialog.QuickPayListener {
                     override fun onQuickPayExit() {

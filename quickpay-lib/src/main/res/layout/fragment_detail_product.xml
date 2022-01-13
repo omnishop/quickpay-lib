@@ -134,8 +134,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_6sdp"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:layout_marginRight="@dimen/_6sdp"
-                            android:paddingBottom="@dimen/_3sdp">
+                            android:paddingTop="@dimen/_3sdp"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_6sdp">
 
                             <ImageView
                                 android:id="@+id/ivSort1"

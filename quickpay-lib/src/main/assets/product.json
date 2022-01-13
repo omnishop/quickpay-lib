@@ -1,110 +1,103 @@
 {
   "statusCode": 200,
-  "data": [
-    {
-      "uid": "0x14ba1",
-      "sku_id": "10000829",
-      "product_name": "Máy ép chậm nguyên trái IoT Kuvings NS-2026BC",
-      "display_name": "Máy ép chậm nguyên trái IoT Kuvings NS-2026BC",
-      "display_name_detail": "Máy ép chậm nguyên trái IoT Kuvings NS-2026BC",
-      "image_cover": "images/products/4ade348c716d1ef2d3fb3fc20591daba.jpeg",
-      "instock": true,
-      "promotion_desc": "Giảm giá sốc",
-      "keywords": "10.3",
-      "count_details": 0,
-      "original": "Việt Nam",
-      "product.pricing": {
-        "price_with_vat": 10990000,
-        "listed_price_with_vat": 12990000
-      },
-      "product.manufacturer": {
-        "uid": "0x149a6",
-        "manufacturer_name": "Omnishop"
-      },
-      "product.collection": [
-        {
-          "uid": "0x397a",
-          "collection_name": "Máy móc thiết bị gia dụng"
-        }
-      ],
-      "video_transcodes": [
-        {
-          "media_type": "video",
-          "thumb": "images/products/0x14ba1/thumb_1628666664481.jpeg",
-          "source": "https://tvcommerce-st.fptplay.net/prod/videos/products/encoded/10007173100129-Livestream-Mayepcham-Mutosi-06052021/index.m3u8"
-        }
-      ],
-      "areas": [
-        {
-          "uid": "0x7c27",
-          "name": "Toàn quốc",
-          "vn_all_province": true
-        }
-      ],
-      "product.areas": [
-        {
-          "uid": "0x7c27",
-          "name": "Toàn quốc",
-          "vn_all_province": true
-        }
-      ],
-      "display_bill_name": "Máy ép chậm nguyên trái IoT Kuvings NS-2026BC",
-      "description_html": "<p><span style=\"color: #4a4a4a; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.14994px; caret-color: #00bdb8; background-color: #ffffff;\">hello hello hello</span></p>",
-      "product.tag": [
-        {
-          "uid": "0x7a74",
-          "tag_title": "Giảm phần trăm",
-          "tag_category": "name_tag",
-          "promotion_value": "",
-          "display_status": 2,
-          "name_tag_value_1": "15",
-          "name_tag_value_2": ""
-        }
-      ],
-      "is_disabled_quickpay": false,
-      "images": [
-        {
-          "square": true,
-          "media_type": "image",
-          "thumb": "images/products/0x14ba1/thumb_1628251942039.jpeg",
-          "source": "images/products/0x14ba1/source_1628251942039.jpeg"
-        },
-        {
-          "square": true,
-          "media_type": "image",
-          "thumb": "images/products/0x14ba1/thumb_1628251942039.jpeg",
-          "source": "images/products/0x14ba1/source_1628251942040.jpeg"
-        },
-        {
-          "square": true,
-          "media_type": "image",
-          "thumb": "images/products/0x14ba1/thumb_1628251942040.jpeg",
-          "source": "images/products/0x14ba1/source_1628251942040.jpeg"
-        },
-        {
-          "square": true,
-          "media_type": "image",
-          "thumb": "images/products/0x14ba1/thumb_1628251942041.jpeg",
-          "source": "images/products/0x14ba1/source_1628251942041.jpeg"
-        },
-        {
-          "square": true,
-          "media_type": "image",
-          "thumb": "images/products/0x14ba1/thumb_1628251942041.jpeg",
-          "source": "images/products/0x14ba1/source_1628251942041.jpeg"
-        }
-      ],
-      "videos": [],
-      "short_descriptions": {
-        "short_des_1": "Giảm Giá Sốc",
-        "short_des_1_color": "#000",
-        "short_des_2": "Sản phẩm bán chạy",
-        "short_des_2_color": "#000",
-        "short_des_3": "Sản phẩm chính hãng",
-        "short_des_3_color": "#000",
-        "short_des_4": "Xuất xứ : Việt Nam",
-        "short_des_4_color": "#000"
+  "action_code": "PRODUCT",
+  "publisher_code": "FPT",
+  "product_data": {
+    "uid": "0x23de6c",
+    "sku_id": "30000097100085",
+    "product_name": "Hàng KM - Bánh que Pocky hương vị sô cô la 40G X 120",
+    "display_name": "Bánh que Pocky hương vị sô cô la 40G X 120",
+    "display_name_detail": "Bánh que Pocky hương vị sô cô la 40G X 120",
+    "color": "#f48024",
+    "image_cover": "images/products/e4f49c2b0a08f5af8c4d8bafc19e2694.png",
+    "instock": true,
+    "show_detail": true,
+    "promotion_desc": "Mua 1 tặng 1. Tiết kiệm 3,000 đồng, giảm 17%.",
+    "keywords": "km,",
+    "count_details": 0,
+    "original": "Thái Lan",
+    "product.pricing": {
+      "price_with_vat": 15000,
+      "listed_price_with_vat": 18000
+    },
+    "product.manufacturer": {
+      "uid": "0x248a6c",
+      "manufacturer_name": "CÔNG TY CỔ PHẦN TM DV SX HƯƠNG THỦY"
+    },
+    "product.supplier": {
+      "uid": "0x248a67",
+      "supplier_name": "CÔNG TY CỔ PHẦN TM DV SX HƯƠNG THỦY",
+      "supplier_id": "100085"
+    },
+    "product.collection": [
+      {
+        "uid": "0x13be6a",
+        "collection_name": "Bánh kẹo"
       }
-    }
-  ]
+    ],
+    "product.brand": {
+      "uid": "0x23cc9f",
+      "brand_name": "Pocky"
+    },
+    "autoplay_video": true,
+    "areas": [
+      {
+        "uid": "0x1f5230",
+        "name": "Toàn quốc",
+        "vn_all_province": true
+      }
+    ],
+    "product.areas": [
+      {
+        "uid": "0x1f5230",
+        "name": "Toàn quốc",
+        "vn_all_province": true
+      }
+    ],
+    "display_bill_name": "Bánh que Pocky Double sô cô la 40G X 120",
+    "short_des_1_color": "#000",
+    "short_des_2_color": "#000",
+    "short_des_3_color": "#000",
+    "short_des_4_color": "#000",
+    "product.tag": [
+      {
+        "uid": "0x29da1d",
+        "tag_title": "Giảm phần trăm và có quà tặng kèm theo",
+        "tag_category": "name_tag",
+        "tag_type": "",
+        "promotion_value": "",
+        "display_status": 2,
+        "name_tag_value_1": "17",
+        "name_tag_value_2": "Quà hấp dẫn"
+      },
+      {
+        "uid": "0x5b737e",
+        "tag_title": "Deal giá sốc",
+        "tag_category": "assess",
+        "tag_type": "text",
+        "promotion_value": "",
+        "display_status": 2,
+        "image_promotion": "images/tag/8fa66e51ffcd3e1515027d964fcdc398.png",
+        "name_tag_value_1": "",
+        "name_tag_value_2": ""
+      }
+    ],
+    "short_descriptions": {
+      "short_des_1": "Mua 1 Tặng 1. Tiết Kiệm 3,000 đồng, Giảm 17%.",
+      "short_des_1_color": "#000",
+      "short_des_3": "Hỗ trợ 30k phí ship cho đơn hàng từ 200k ",
+      "short_des_3_color": "#000",
+      "short_des_4": "Xuất xứ : Thái Lan",
+      "short_des_4_color": "#000"
+    },
+    "images": [
+      {
+        "media_type": "image",
+        "thumb": "images/products/0x23de6c/thumb_1619147673347.jpeg",
+        "source": "images/products/0x23de6c/source_1619147673317.jpeg",
+        "square": true
+      }
+    ],
+    "videos": []
+  }
 }

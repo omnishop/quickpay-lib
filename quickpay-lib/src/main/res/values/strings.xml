@@ -8,9 +8,15 @@
     <string name="text_hoan_tat_low">XONG</string>
     <string name="space">SPACE</string>
 
+    <string name="txt_product">Product</string>
+    <string name="txt_video">Related videos</string>
+    <string name="txt_info">Informations</string>
+    <string name="txt_comment">Comment</string>
+    <string name="txt_voucher">Vouchers</string>
 
     <string name="tv_receive_voucher_success">Nhận voucher thành công</string>
     <string name="tv_receive_voucher_message">Vui lòng truy cập vào FPT Play Reward trên Web hoặc Mobile, vào mục quà của tôi để sử dụng voucher.</string>
+
 
 
 </resources>

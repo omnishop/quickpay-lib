@@ -39,6 +39,39 @@ object Functions {
     private val suffixes = TreeMap<Long, String>()
 
     @Synchronized
+    fun animateScaleDownLiveStream(v: View, duration: Long = 200) {
+        val currentScaleX = v.scaleX
+        val currentScaleY = v.scaleY
+        val targetScale = 1f.takeIf { duration == 200L } ?: 0f
+        val scaleXHolder =
+            PropertyValuesHolder.ofFloat(View.SCALE_X, currentScaleX, targetScale)
+        val scaleYHolder =
+            PropertyValuesHolder.ofFloat(View.SCALE_Y, currentScaleY, targetScale)
+        val scaleAnimator = ObjectAnimator.ofPropertyValuesHolder(v, scaleXHolder, scaleYHolder)
+        scaleAnimator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                if (targetScale == 0f) {
+                    v.visibility = View.GONE
+                }
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+
+        })
+        scaleAnimator.setEvaluator(FloatEvaluator())
+        scaleAnimator.interpolator = AccelerateInterpolator()
+        scaleAnimator.duration = duration
+        scaleAnimator.start()
+    }
+
+    @Synchronized
     fun animateScaleDown(v: View, duration: Long = 200) {
         val currentScaleX = v.scaleX
         val currentScaleY = v.scaleY
@@ -223,12 +256,8 @@ object Functions {
             val builder = GsonBuilder()
             val gson = builder.create()
             val data = JSONObject(loadJSONFromAsset(context, "product.json"))
-            val listProduct = data.getJSONArray("data")
-            if (listProduct.length() >= 1) {
-                return gson.fromJson(listProduct.getString(0), Product::class.java)
-            }
-            return null
-
+            val listProduct = data.getJSONObject("product_data").toString()
+            return gson.fromJson(listProduct, Product::class.java)
         } catch (e: java.lang.Exception) {
             return null
         }
